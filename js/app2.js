@@ -1,14 +1,50 @@
-var app = angular.module('myapp', []);
+var app = angular.module('myapp', ['ngRoute']);
 
+// configure our routes
+app.config(function ($routeProvider) {
+    $routeProvider
 
-app.directive("xinput", function() {
+            // route for the home page
+            .when('/', {
+                templateUrl: baseurl+'pages/home',
+                controller: 'mainController'
+            })
+
+            // route for the about page
+            .when('/about', {
+                templateUrl: baseurl+'pages/about',
+                controller: 'aboutController'
+            })
+
+            // route for the contact page
+            .when('/contact', {
+                templateUrl: baseurl+'pages/contact',
+                controller: 'contactController'
+            });
+});
+
+// create the controller and inject Angular's $scope
+app.controller('mainController', function ($scope) {
+    // create a message to display in our view
+    $scope.message = 'Everyone come and see how good I look!';
+});
+
+app.controller('aboutController', function ($scope) {
+    $scope.message = 'Look! I am an about page.';
+});
+
+app.controller('contactController', function ($scope) {
+    $scope.message = 'Contact us! JK. This is just a demo.';
+});
+
+app.directive("xinput", function () {
     return {
         restrict: 'E',
         scope: {
             ngModel: '='
         },
-        template:'<input name="ngModel" type="text" placeholder="{{form.name.placeHolder}}" class="form-control input-md" required value="{{ngModel}}"/>',
-        replace:true
+        template: '<input name="ngModel" type="text" placeholder="{{form.name.placeHolder}}" class="form-control input-md" required value="{{ngModel}}"/>',
+        replace: true
     }
 });
 
@@ -18,10 +54,10 @@ app.controller('formController', function ($scope, $http, $filter) {
 
 
 
-    $scope.form={
-        name:{placeHolder:"type your name",requred:"true"},
+    $scope.form = {
+        name: {placeHolder: "type your name", requred: "true"},
     };
-    
+
     $scope.formModels = {
         height: {
             value: "", error: {state: false, msg: ""}

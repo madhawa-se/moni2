@@ -33,6 +33,7 @@
 
 
         <script src="<?php echo base_url() ?>js/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
         <script>
             var baseurl = "<?php echo base_url(); ?>";
         </script>
@@ -192,6 +193,23 @@ if (isset($jsondata)) {
 
 
                     </style>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+                        <li><a href="#contact"><i class="fa fa-comment"></i> Contact</a></li>
+                    </ul>
+
+                    <!-- MAIN CONTENT AND INJECTED VIEWS -->
+                    <div id="main">
+
+                        <!-- angular templating -->
+                        <!-- this is where content will be injected -->
+                        <div ng-view></div>
+
+                    </div>
+
+
                     <div class="well8">
                         <div class="container">
 
@@ -218,7 +236,7 @@ if (isset($jsondata)) {
                                                 <a href="#">
                                                     <!--
                                                     <span class="glyphicon glyphicon-user"></span>
-                                                    <?php// echo $uname ?> 
+                                                    <?php // echo $uname ?> 
                                                     -->
                                                     <img class="img-circle profile-pic" src="<?php echo $pic ?>" />
                                                 </a>
