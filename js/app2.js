@@ -448,11 +448,11 @@ app.controller('UploadController', function ($scope, fileReader) {
     });
 });
 app.controller('mailCTRL', function ($scope, $http) {
-    $scope.inbox={}
-    $scope.inbox.pageStart=1;
-    $scope.inbox.pageEnd=1;
-    $scope.inbox.email=[];
-    
+    $scope.inbox = {}
+    $scope.inbox.pageStart = 1;
+    $scope.inbox.pageEnd = 1;
+    $scope.inbox.email = [];
+
     $scope.compose = function () {
         $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -467,6 +467,32 @@ app.controller('mailCTRL', function ($scope, $http) {
         }
         );
     };
+
+    $scope.loadMessages = function () {
+        $http({
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            method: 'POST',
+            //data: "to=" + $scope.to + "&message=" + $scope.message,
+            url: baseurl + "message/get_messages",
+
+        }).then(function successCallback(response) {
+            $scope.handleResponce(response.data);
+        }, function errorCallback(response) {
+            alert("error");
+        }
+        );
+
+
+    }
+    $scope.handleResponce = function (data) {
+        if (data.state == true) {
+            $scope.inbox.email = data.data;
+            console.log($scope.inbox.email);
+        } else {
+            alert("responce error");
+        }
+    }
+    $scope.loadMessages();
 });
 
 app.directive("ngFileSelect", function (fileReader, $timeout) {

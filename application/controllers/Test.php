@@ -16,7 +16,7 @@ class Test extends My_Controller {
     }
 
     function index() {
-        $this->load->view('search',$this->view_data);
+        $this->load->view('profileview',$this->view_data);
     }
 
 }

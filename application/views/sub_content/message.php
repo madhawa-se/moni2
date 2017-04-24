@@ -507,36 +507,17 @@
                 </div>
                 <table class="table table-inbox table-hover">
                     <tbody>
-                        <tr class="unread">
+                        <tr class="unread" ng-repeat="email in inbox.email">
                             <td class="inbox-small-cells">
                                 <input type="checkbox" class="mail-checkbox">
                             </td>
                             <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                            <td class="view-message dont-show">hello how are you</td>
+                            <td class="view-message dont-show">{{email.msg}}</td>
                             <td class="view-message">Request from madhawa</td>
                             <td class="view-message inbox-small-cells"></td>
-                            <td class="view-message text-right">March 15</td>
+                            <td class="view-message text-right">{{email.date | date :  "MMM d"}}</td>
                         </tr>
-                        <tr class="">
-                            <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox">
-                            </td>
-                            <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                            <td class="view-message dont-show">hello how are you</td>
-                            <td class="view-message">Request from madhawa</td>
-                            <td class="view-message inbox-small-cells"></td>
-                            <td class="view-message text-right">March 15</td>
-                        </tr>
-                        <tr class="">
-                            <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox">
-                            </td>
-                            <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                            <td class="view-message dont-show">hello how are you</td>
-                            <td class="view-message">Request from madhawa</td>
-                            <td class="view-message inbox-small-cells"></td>
-                            <td class="view-message text-right">March 15</td>
-                        </tr>
+                      
 
                     </tbody>
                 </table>

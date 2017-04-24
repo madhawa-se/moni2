@@ -29,8 +29,9 @@ class Message_model extends CI_Model {
     function get_messages(){
         $uid = get_logged_user_id();
         $this->db->from('message');
-        $this->db->where('user_id', $uid);
+        $this->db->where('to', $uid);
         $query = $this->db->get();
+        return $query->result();
     }
 
 }
