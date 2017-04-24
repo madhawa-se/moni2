@@ -4,36 +4,39 @@ var app = angular.module('myapp', ['ngRoute']);
 app.config(function ($routeProvider) {
     $routeProvider
 
-            // route for the home page
-            .when('/', {
-                templateUrl: baseurl+'pages/home',
-                controller: 'mainController'
-            })
 
-            // route for the about page
-            .when('/about', {
-                templateUrl: baseurl+'pages/about',
-                controller: 'aboutController'
+            .when("/#!/#green", {
+                templateUrl: baseurl + "pages/green",
+                controller: 'green'
             })
-
-            // route for the contact page
-            .when('/contact', {
-                templateUrl: baseurl+'pages/contact',
-                controller: 'contactController'
+            .when("#!/blue", {
+                templateUrl: baseurl + "pages/blue",
+                controller: 'blue'
+            })
+            .otherwise({
+                templateUrl: baseurl + "pages/no",
+                controller: 'no'
             });
 });
 
+
+
+
 // create the controller and inject Angular's $scope
-app.controller('mainController', function ($scope) {
+app.controller('main', function ($scope) {
+    // create a message to display in our view
+    $scope.message = 'main exmaple!';
+});
+app.controller('red', function ($scope) {
     // create a message to display in our view
     $scope.message = 'Everyone come and see how good I look!';
 });
 
-app.controller('aboutController', function ($scope) {
+app.controller('green', function ($scope) {
     $scope.message = 'Look! I am an about page.';
 });
 
-app.controller('contactController', function ($scope) {
+app.controller('blue', function ($scope) {
     $scope.message = 'Contact us! JK. This is just a demo.';
 });
 
@@ -443,6 +446,27 @@ app.controller('UploadController', function ($scope, fileReader) {
     $scope.$on("fileProgress", function (e, progress) {
         $scope.progress = progress.loaded / progress.total;
     });
+});
+app.controller('mailCTRL', function ($scope, $http) {
+    $scope.inbox={}
+    $scope.inbox.pageStart=1;
+    $scope.inbox.pageEnd=1;
+    $scope.inbox.email=[];
+    
+    $scope.compose = function () {
+        $http({
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            method: 'POST',
+            data: "to=" + $scope.to + "&message=" + $scope.message,
+            url: baseurl + "message/compose",
+
+        }).then(function successCallback(response) {
+            $scope.handleError(response.data);
+        }, function errorCallback(response) {
+            alert("error");
+        }
+        );
+    };
 });
 
 app.directive("ngFileSelect", function (fileReader, $timeout) {

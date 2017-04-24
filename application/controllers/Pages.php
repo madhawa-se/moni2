@@ -6,13 +6,19 @@ class Pages extends CI_Controller{
 
     }
    
-    function home(){
-        echo 'home';
+    function main(){
+        echo 'main';
     }
-    function about(){
-        echo 'about';
+    function red(){
+        echo 'red';
     }
-    function contact(){
-        echo 'contact';
+    function green(){
+        echo 'green';
+    }
+    function blue(){
+        echo 'blue';
+    }
+    function no(){
+        echo 'no';
     }
 }
