@@ -303,7 +303,11 @@
                             <div class="desc">Curious developer</div>
                             <div class="desc">Tech geek</div>
                         </div>
-                        <div class="color-overlay"> </div>
+                        <div class="color-overlay">
+                            
+                            <button>Full Profile</button>
+                            
+                        </div>
                     </div>
                 </div>
 
