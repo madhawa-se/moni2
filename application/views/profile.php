@@ -216,7 +216,7 @@ if (isset($jsondata)) {
                                             <li class="active"><a href="#">Home</a></li>
                                             <li><a href="<?php echo site_url('profile/message'); ?>"><span class="glyphicon glyphicon-envelope"></span> Inbox</a></li>
                                             <li><a href="<?php echo site_url('profile/edit'); ?>"><span class="glyphicon glyphicon-pencil"></span> Edit profile</a></li>
-                                            <li><a href="#"><span class="glyphicon glyphicon-search"></span> Search</a></li>
+                                            <li><a href="<?php echo site_url('profile/search'); ?>"><span class="glyphicon glyphicon-search"></span> Search</a></li>
                                         </ul>
                                         <ul class="nav navbar-nav navbar-right">
                                             <li>

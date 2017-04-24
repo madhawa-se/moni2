@@ -31,6 +31,13 @@ class Profile extends My_Controller {
         $this->view_data["jsondata"] = $this->user_model->get_user_data($email);
         $this->base_profile();
     }
+    public function search() {
+        $login_data = $this->session->userdata('loggedin');
+        $email = $login_data["username"];
+        $this->view_data["sub_content"] = $this->load->view('sub_content/search','',TRUE);
+        $this->view_data["jsondata"] = $this->user_model->get_user_data($email);
+        $this->base_profile();
+    }
 
     public function get_log_user_id() {
         $login_data = $this->session->userdata('loggedin');
