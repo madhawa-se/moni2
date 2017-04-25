@@ -32,8 +32,9 @@
 
         <script src="<?php echo base_url() ?>js/bootstrap.min.js" type="text/javascript"></script>
 
-        <script src="<?php echo base_url() ?>js/angular.js"></script>
-        <script src="<?php echo base_url() ?>js/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+
         <script>
             var baseurl = "<?php echo base_url(); ?>";
         </script>
@@ -101,7 +102,23 @@ if (isset($jsondata)) {
 
 
     <body>
+        <div id="header">
+            <h1 id="logo"><a href="#/home"></a></h1>
 
+            <div id="menu">
+                <a href="#/home" class="btn">Home</a>
+                <a href="#/about" class="btn">About</a>
+                <a href="#/experiments" class="btn">Experiments</a>
+            </div>
+            <div class="color"></div>
+            <div class="clear"></div>
+        </div>
+        <!-- //top -->
+        <div class="shadow"></div>
+
+        <div id="container">
+            <div ng-view></div>
+        </div>
 
         <!--header starat-->
 
@@ -196,7 +213,7 @@ if (isset($jsondata)) {
 
 
 
-                
+
 
 
                     <div class="well8">
@@ -284,69 +301,73 @@ if (isset($jsondata)) {
 
 
                     </style>
-                    <?php if (isset($sub_content)) { echo $sub_content;}?>
-                      
-
-                            <div class="well4">
-                                <div class="container">
-                                    <h4><b>Browse Matrimoney profile by</b></h4>
-
-                                    <div class="wel">
-                                        <div class="col-md-6">
-                                            <h5><b>Religion :</b></h5>
-                                            Hindu : <a href="">Hindu Brides</a> | <a href="">Hindu Grooms</a><br>
-                                            Muslim : <a href="">Muslim Brides</a> | <a href="">Muslim Grooms</a><br>
-                                            Christian : <a href="">Christian Brides</a> | <a href="">Christian Grooms</a><br>
-                                            Buddhist : <a href="">Buddhist Brides</a> | <a href="">Buddhist Grooms</a>
-
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <h5><b>Language :</b></h5>
-                                            Sinhala : <a href="">Sinhala Brides</a> | <a href="">Sinhala Grooms</a><br>
-                                            Tamil : <a href="">Tamil Brides</a> | <a href="">Tamil Grooms</a><br>
-                                            Malay : <a href="">Malay Brides</a> | <a href="">Malay Grooms</a><br>
+                    <?php
+                    if (isset($sub_content)) {
+                        echo $sub_content;
+                    }
+                    ?>
 
 
-                                            <h5><b>Lives in:</b></h5>
-                                            <a href="">Sri Lanka</a> | <a href="">UAE</a>
-                                            <a href="">UK</a> | <a href="">Qatar</a>
-                                            <a href="">India</a> | <a href="">Saudi Arabia</a> | <a href="">Australia</a><br>
+                    <div class="well4">
+                        <div class="container">
+                            <h4><b>Browse Matrimoney profile by</b></h4>
 
-
-                                        </div>
-
-
-                                    </div>
+                            <div class="wel">
+                                <div class="col-md-6">
+                                    <h5><b>Religion :</b></h5>
+                                    Hindu : <a href="">Hindu Brides</a> | <a href="">Hindu Grooms</a><br>
+                                    Muslim : <a href="">Muslim Brides</a> | <a href="">Muslim Grooms</a><br>
+                                    Christian : <a href="">Christian Brides</a> | <a href="">Christian Grooms</a><br>
+                                    Buddhist : <a href="">Buddhist Brides</a> | <a href="">Buddhist Grooms</a>
 
                                 </div>
+
+                                <div class="col-md-6">
+                                    <h5><b>Language :</b></h5>
+                                    Sinhala : <a href="">Sinhala Brides</a> | <a href="">Sinhala Grooms</a><br>
+                                    Tamil : <a href="">Tamil Brides</a> | <a href="">Tamil Grooms</a><br>
+                                    Malay : <a href="">Malay Brides</a> | <a href="">Malay Grooms</a><br>
+
+
+                                    <h5><b>Lives in:</b></h5>
+                                    <a href="">Sri Lanka</a> | <a href="">UAE</a>
+                                    <a href="">UK</a> | <a href="">Qatar</a>
+                                    <a href="">India</a> | <a href="">Saudi Arabia</a> | <a href="">Australia</a><br>
+
+
+                                </div>
+
+
                             </div>
-                        </div></div>
+
+                        </div>
+                    </div>
+                </div></div>
 
 
-                    <br>
-                    <style>
-                        .well9 {
+            <br>
+            <style>
+                .well9 {
 
 
-                        margin-bottom: 0px;
-                        background-color: #fff;
-                        color: #000;
+                    margin-bottom: 0px;
+                    background-color: #fff;
+                    color: #000;
 
-                    }
-
-
-                </style>
+                }
 
 
-                <!--footer-->
-
-                <footer>
-                    <?php echo $footer ?>
-                </footer>
+            </style>
 
 
+            <!--footer-->
+
+     
+<?php echo $footer ?>
+           
 
 
-            </body>
-        </html>
+
+
+        </body>
+    </html>

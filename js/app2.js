@@ -1,44 +1,26 @@
 var app = angular.module('myapp', ['ngRoute']);
 
-// configure our routes
+
+////////////////////////////////////////////////
+
 app.config(function ($routeProvider) {
-    $routeProvider
+    $routeProvider.
+            when('/about', {templateUrl: 'partials/about.html', controller: 'AboutCtrl'}).
+            when('/experiments', {templateUrl: 'partials/experiments.html', controller: 'ExperimentsCtrl'}).
+            when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'}).
+            otherwise({redirectTo: '/home'});
+}).controller('AboutCtrl', function ($scope) {
 
 
-            .when("/#!/#green", {
-                templateUrl: baseurl + "pages/green",
-                controller: 'green'
-            })
-            .when("#!/blue", {
-                templateUrl: baseurl + "pages/blue",
-                controller: 'blue'
-            })
-            .otherwise({
-                templateUrl: baseurl + "pages/no",
-                controller: 'no'
-            });
+}).controller('ExperimentsCtrl', function ($scope) {
+
+}).controller('HomeCtrl', function ($scope) {
+
 });
 
+////////////////////////////////////////////////
 
 
-
-// create the controller and inject Angular's $scope
-app.controller('main', function ($scope) {
-    // create a message to display in our view
-    $scope.message = 'main exmaple!';
-});
-app.controller('red', function ($scope) {
-    // create a message to display in our view
-    $scope.message = 'Everyone come and see how good I look!';
-});
-
-app.controller('green', function ($scope) {
-    $scope.message = 'Look! I am an about page.';
-});
-
-app.controller('blue', function ($scope) {
-    $scope.message = 'Contact us! JK. This is just a demo.';
-});
 
 app.directive("xinput", function () {
     return {
