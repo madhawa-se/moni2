@@ -13,6 +13,16 @@ class Profile extends uploadable {
         $this->load->model("reg_model");
     }
 
+    public function user($id) {
+       $state=$this->user_model->get_user_by_id($id);
+       $this->view_data["user_data"]=$state;
+       if($state!==FALSE){
+            $this->load->view('profile/profileview',$this->view_data);
+       }else{
+           show_404(); 
+       }
+        //not found add
+    }
     public function index() {
         $this->base_profile();
     }

@@ -266,7 +266,10 @@
             opacity: 0.6;
         }
     </style>
-    <div class="row">
+
+    <script src="<?php echo base_url() ?>js/search.js"></script>
+
+    <div class="row" ng-controller="searchCTRL">
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
                 <li class="active"><a href="#tab_a" data-toggle="pill">Search</a></li>
@@ -285,30 +288,10 @@
                                 <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
                         </div>
-                    </form></div>
-                <div class="col-lg-4 col-sm-6">
+                    </form>
+                </div>
+                <div ng-include="'<?php echo base_url() ?>search/search_all'">
 
-                    <div class="card hovercard">
-                        <div class="cardheader">
-
-                        </div>
-                        <div class="avatar">
-                            <img alt="" src="http://lorempixel.com/100/100/people/9/">
-                        </div>
-                        <div class="info">
-                            <div class="title">
-                                <a target="_blank" href="http://scripteden.com/">Script Eden</a>
-                            </div>
-                            <div class="desc">Passionate designer</div>
-                            <div class="desc">Curious developer</div>
-                            <div class="desc">Tech geek</div>
-                        </div>
-                        <div class="color-overlay">
-                            
-                            <button>Full Profile</button>
-                            
-                        </div>
-                    </div>
                 </div>
 
             </div>

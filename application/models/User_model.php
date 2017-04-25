@@ -48,7 +48,7 @@ class user_model extends CI_Model {
         }
     }
 
-    function updateUser($uid,$data) {
+    function updateUser($uid, $data) {
         //return $this->db->insert('user', $data);
         //var_dump($data);
 
@@ -95,8 +95,8 @@ class user_model extends CI_Model {
 
     function verify_reset($id, $key) {
 
-        echo $id."<br>";
-        echo $key."<br>";
+        echo $id . "<br>";
+        echo $key . "<br>";
         $this->db->from('reset');
         $this->db->where('user_id', $id);
         $query = $this->db->get();
@@ -166,6 +166,19 @@ class user_model extends CI_Model {
 
         $this->db->from('user');
         $this->db->where('email', $email);
+        $query = $this->db->get();
+
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            return $row;
+        }
+
+        return false;
+    }
+
+    function get_user_by_id($id) {
+        $this->db->from('user');
+        $this->db->where('id', $id);
         $query = $this->db->get();
 
         if ($query->num_rows() > 0) {

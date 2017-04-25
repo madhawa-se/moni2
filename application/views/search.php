@@ -23,7 +23,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="row">
+            <div class="row" ng-include="http://localhost/newleaf/profile/search">
                 <div class="col-md-4">
 
                     <div class="card" style="width: 20rem;">
