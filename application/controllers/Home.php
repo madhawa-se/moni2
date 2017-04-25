@@ -224,7 +224,7 @@ loveheart.lk
         $this->email->subject($subject);
         $this->email->message($content);
         //mad
-        echo $content;
+        //echo $content;
         return $this->email->send();
     }
 

@@ -17,7 +17,7 @@
             </div>
             <div class="color-overlay">
 
-                <button>Full Profile</button>
+                <a href="<?php echo base_url()."profile/user/".$profile->id?>" target="_blank">Full Profile</a>
 
             </div>
         </div>

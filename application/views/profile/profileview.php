@@ -1,7 +1,7 @@
 <html>
     <head>
 
-        <title>Bootstrap 101 Template</title>
+        <title><?php echo "User ".$user_data->name?></title>
 
         <!-- Bootstrap -->
         <link href="<?php echo base_url() ?>css/bootstrap.css" rel="stylesheet">
