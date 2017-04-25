@@ -4,14 +4,16 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 function get_profile_pic($id = NULL) {
-    $pic = file_exists("images/profiles/pic/p ($id).jpg");
+    $pic = file_exists("uploads/$id.jpg");
     if ($pic === true) {
-        $pic = base_url() . "images/profiles/pic/p ($id).jpg";
+        $pic = base_url() . "uploads/$id.jpg";
     } else {
         $pic = base_url() . "images/profiles/pic/null1.jpg";
     }
     return $pic;
 }
+
+
 
 function test_login() {
     $CI = & get_instance();  //get instance, access the CI superobject
@@ -38,3 +40,6 @@ function get_logged_user_id() {
     $uid = $udata->id;
     return $uid;
 }
+
+
+

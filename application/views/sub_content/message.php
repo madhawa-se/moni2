@@ -391,13 +391,13 @@
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">To</label>
                                         <div class="col-lg-10">
-                                            <input type="text" placeholder="" id="inputEmail1" class="form-control" ng-model="to">
+                                            <input type="text" placeholder="" id="inputEmail1" class="form-control" ng-model="message.to">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-lg-2 control-label">Message</label>
                                         <div class="col-lg-10">
-                                            <textarea rows="10" cols="30" class="form-control" id="" name="" ng-model="message"></textarea>
+                                            <textarea rows="10" cols="30" class="form-control" id="" name="" ng-model="message.content"></textarea>
                                         </div>
                                     </div>
 
@@ -408,7 +408,7 @@
                                                 <span>Attachment</span>
                                                 <input type="file" name="files[]" multiple="">
                                             </span>
-                                            <button class="btn btn-send" type="button" ng-model="compose_btn" ng-click="compose()">Send</button>
+                                            <button class="btn btn-send" type="button" ng-model="compose_btn" ng-click="message.compose()">Send</button>
                                         </div>
                                     </div>
                                 </form>
@@ -419,11 +419,11 @@
             </div>
             <ul class="inbox-nav inbox-divider">
                 <li class="active">
-                    <a href="#"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+                    <a href="" ng-click="loadMessages('inbox')"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
 
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
+                    <a href=""  ng-click="loadMessages('outbox')"><i class="fa fa-envelope-o"></i> Sent Mail</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
@@ -507,12 +507,12 @@
                 </div>
                 <table class="table table-inbox table-hover">
                     <tbody>
-                        <tr class="unread" ng-repeat="email in inbox.email">
+                        <tr class="unread" ng-repeat="email in message.emails">
                             <td class="inbox-small-cells">
                                 <input type="checkbox" class="mail-checkbox">
                             </td>
                             <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
-                            <td class="view-message dont-show">{{email.msg}}</td>
+                            <td class="view-message dont-show"><p>{{email.msg}}</p></td>
                             <td class="view-message">Request from madhawa</td>
                             <td class="view-message inbox-small-cells"></td>
                             <td class="view-message text-right">{{email.date | date :  "MMM d"}}</td>

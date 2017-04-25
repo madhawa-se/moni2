@@ -22,7 +22,7 @@ class My_Controller extends CI_Controller {
             $this->loggedin = true;
             $login_data = $this->session->userdata('loggedin');
             $uname = $login_data["username"];
-            $pic = get_profile_pic(1);
+            $pic = get_profile_pic(get_logged_user_id());
             $this->view_data["pic"] = $pic;
 
             //echo ("hello $uname ! welcome back");
@@ -36,6 +36,34 @@ class My_Controller extends CI_Controller {
     public function genarate_footer() {
         $template_footer = $this->load->view("footers/footer", '', TRUE);
         $this->view_data["footer"] = $template_footer;
+    }
+
+}
+
+class uploadable extends My_Controller {
+
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function do_upload($uid) {
+        $config['upload_path'] = 'uploads';
+        $config['overwrite'] = true;
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 0;
+        $config['max_width'] = 0;
+        $config['max_height'] = 0;
+        $config['file_name'] = "$uid";
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('profile_pic')) {
+            $error = array('error' => $this->upload->display_errors());
+
+            var_dump($error);
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+        }
     }
 
 }

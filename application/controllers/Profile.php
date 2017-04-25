@@ -1,6 +1,6 @@
 <?php
 
-class Profile extends My_Controller {
+class Profile extends uploadable {
 
     public function __construct() {
         parent::__construct();
@@ -43,7 +43,7 @@ class Profile extends My_Controller {
         $login_data = $this->session->userdata('loggedin');
         $email = $login_data["username"];
         $udata = $this->user_model->get_user($email);
-        var_dump($udata);
+        //var_dump($udata);
         $uid = $udata->id;
         return $uid;
     }
@@ -56,7 +56,7 @@ class Profile extends My_Controller {
             $this->load->view('profile', $this->view_data);
         } else {
             //redirect('/home');
-            var_dump($this->user_model->get_user($email));
+            //var_dump($this->user_model->get_user($email));
         }
     }
 
@@ -68,7 +68,7 @@ class Profile extends My_Controller {
 
 
         $this->form_validation->set_rules('name', 'name', 'required');
-        $this->form_validation->set_rules('email', 'email', 'required');
+        //$this->form_validation->set_rules('email', 'email', 'required');
 
         $this->form_validation->set_rules('profilefor', 'profile for', 'required');
         $this->form_validation->set_rules('gender', 'gender', 'required');
@@ -81,7 +81,9 @@ class Profile extends My_Controller {
             $this->reg_submit();
         } else {
             $this->view_data['update_errors'] = validation_errors();
+            var_dump($this->view_data['update_errors']);
         }
+
 
         $this->view_data['countries'] = $this->reg_model->get_contry_list();
         $this->edit();
@@ -94,7 +96,6 @@ class Profile extends My_Controller {
 
         $data = array(
             'name' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
             'religion' => $this->input->post('religion'),
             'profilefor' => $this->input->post('profilefor'),
             'lan' => $this->input->post('mothertongue'),
@@ -114,26 +115,7 @@ class Profile extends My_Controller {
         }
     }
 
-    public function do_upload($uid) {
-        $config['upload_path'] = 'uploads';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 0;
-        $config['max_width'] = 0;
-        $config['max_height'] = 0;
-        $config['file_name'] = "$uid";
 
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('profile_pic')) {
-            $error = array('error' => $this->upload->display_errors());
-
-            var_dump($error);
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-
-            var_dump($data);
-        }
-    }
 
     public function update_profile() {
 

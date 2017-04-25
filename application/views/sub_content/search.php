@@ -272,7 +272,7 @@
                 <li class="active"><a href="#tab_a" data-toggle="pill">Search</a></li>
                 <li><a href="#tab_b" data-toggle="pill">Advanced Search</a></li>
                 <li><a href="#tab_c" data-toggle="pill">Quick Search</a></li>
-                <li><a href="#tab_d" data-toggle="pill">Pill D</a></li>
+                <li><a href="#tab_d" data-toggle="pill">Short List</a></li>
             </ul>
         </div>
         <div class="col-md-9">

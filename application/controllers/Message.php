@@ -23,8 +23,12 @@ class Message extends My_Controller {
         }
     }
 
-    public function get_messages() {
-        $messages = $this->Message_model->get_messages();
+    public function get_inbox() {
+        $messages = $this->Message_model->get_inbox();
+        print_json(TRUE,$messages);
+    }
+    public function get_outbox() {
+        $messages = $this->Message_model->get_outbox();
         print_json(TRUE,$messages);
     }
 

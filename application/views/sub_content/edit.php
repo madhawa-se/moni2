@@ -87,21 +87,14 @@
                                         </div>
                                     </div>
 
-
-
-
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="textinput" align="left">Name</label>
+                                        <label class="col-md-3 control-label" for="name" align="left">Name</label>
                                         <div class="col-md-9">
-                                            <input  name="name" ng-model="email" type="text" placeholder="your email address" class="form-control input-md" required/>
-                                            <p ng-show="regform.email.$invalid && (!regform.email.$pristine || submitted)" class="help-danger help">You mail is required.</p>
-
-                                            <xinput ng-model="name"></xinput>
+                                            <input id="name" ng-model="name" name="name" type="text" placeholder="Your Name" class="form-control input-md" required="">
+                                            <p ng-show="regform.name.$invalid && (!regform.name.$pristine || submitted)" class="help-danger help">You name is required.</p>
                                         </div>
 
                                     </div>
-
-
 
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="notifymode">Gender</label>
