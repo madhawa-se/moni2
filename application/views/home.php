@@ -37,6 +37,11 @@
             var baseurl = "<?php echo base_url(); ?>";
         </script>
         <script src="<?php echo base_url() ?>js/app.js"></script>
+        <style>
+            #map{
+                height:500px;
+            }
+        </style>
     </head>
 
 
@@ -97,7 +102,7 @@
                             }
 
                         </style>
-                        <img class="img3 img-responsive" style="max-height:450px !important" src="<?php echo base_url() ?>images/map4.png" align="center">
+                        <img id="map" class="img3 img-responsive" style="max-height:450px !important" src="<?php echo base_url() ?>images/map4.png" align="center">
 
                         </div>	
 
@@ -374,18 +379,18 @@
 
     <div class="well2" >
         <div class="container">
-            <form class="form-inline" role="form">
+            <form class="form-inline" role="form" method="post" action="<?php echo site_url("Search/quick_search_submit") ?>">
 
                 <h1>Find the one who completes you </h1>
 
                 <div class="form-group">
                     <label for="name">Looking For</label><br>
                     <div class="radio radio-info radio-inline">
-                        <input type="radio" size="12" id="inlineRadio1" value="1" name="groom" checked="">
+                        <input type="radio" size="12" id="inlineRadio1" value="1" name="gender" checked="">
                         <label for="inlineRadio1"> Groom </label>
                     </div>
                     <div class="radio radio-inline">
-                        <input type="radio" id="inlineRadio2" value="2" name="bride">
+                        <input type="radio" id="inlineRadio2" value="2" name="gender">
                         <label for="inlineRadio2"> Bride </label>
                     </div>
                 </div>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -456,28 +461,27 @@
                     </select>
                 </div>
                 &nbsp;&nbsp;&nbsp;
-                <div class="form-group">
-                    <label></label><br>
-
-                    <style>
-                        .button4 {
-                            color: #FFF;
-                            background-color: #7140bc;
-                            width:100px;
-                            height:40px;
-
-                        }
-
-                        .button4:hover {
-                            background-color: #dd3175; 
-                            color: white;
-                        }	
-
-                    </style>
 
 
+                <style>
+                    .button4 {
+                        color: #FFF;
+                        background-color: #7140bc;
+                        width:100px;
+                        height:40px;
 
-                    <button type="submit" class="button4">Search</button>
+                    }
+
+                    .button4:hover {
+                        background-color: #dd3175; 
+                        color: white;
+                    }	
+
+                </style>
+
+
+
+                <button type="submit" class="button4">Search</button>
             </form>
         </div>
     </div>
@@ -714,7 +718,166 @@
     </div>
 
 
+    <script>
+        /* map code
+        var map;
+        function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 2,
+                center: new google.maps.LatLng(2.8, - 187.3),
+                styles: [
+                {
+                "elementType": "labels",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "administrative.land_parcel",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "administrative.land_parcel",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "visibility": "on"
+                        }
+                        ]
+                },
+                {
+                "featureType": "administrative.neighborhood",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "landscape.natural",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#ff6ab5"
+                        }
+                        ]
+                },
+                {
+                "featureType": "poi",
+                        "elementType": "labels.text",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "poi.business",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#ffffa6"
+                        }
+                        ]
+                },
+                {
+                "featureType": "road",
+                        "elementType": "labels.icon",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "road.arterial",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "road.highway",
+                        "elementType": "labels",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "road.local",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "transit",
+                        "stylers": [
+                        {
+                        "visibility": "off"
+                        }
+                        ]
+                },
+                {
+                "featureType": "water",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                        "color": "#fff0f5"
+                        },
+                        {
+                        "visibility": "on"
+                        }
+                        ]
+                }
+                ]
 
+        });
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+        }
+
+        // Loop through the results array and place a marker for each
+        // set of coordinates.
+        var image = 'marker.png';
+        window.eqfeed_callback = function (results) {
+        for (var i = 0; i < results.features.length; i++) {
+        var coords = results.features[i].geometry.coordinates;
+        var latLng = new google.maps.LatLng(coords[1], coords[0]);
+        var marker = new google.maps.Marker({
+        position: latLng,
+                map: map,
+                icon: image
+        });
+        }
+        }
+        */
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH-6gXTaMmeqAhyVcdlkTbePb6nqSn0Kw&callback=initMap">
+    </script>
 
 
 </body>

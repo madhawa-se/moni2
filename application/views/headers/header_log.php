@@ -12,7 +12,7 @@
                             }
 
                         </style>
-                        <img src="<?php echo base_url() ?>images/logo5.png" class="img2">
+                        <a href="<?php echo base_url() ?>"><img height="80px" src="<?php echo base_url() ?>images/logo5.png" class="img2"></a>
 
                     </div>
                     <div class="col-sm-6 hidden-xs">

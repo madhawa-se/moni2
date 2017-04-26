@@ -17,7 +17,7 @@ class Search extends CI_Controller {
 
     public function search_all() {
         $this->view_data['user_profiles'] = $this->Search_model->search_all();
-        $this->load->view('profile/card',$this->view_data);
+        $this->load->view('profile/card', $this->view_data);
     }
 
     public function paginate() {
@@ -28,6 +28,16 @@ class Search extends CI_Controller {
         $this->pagination->initialize($config);
 
         echo $this->pagination->create_links();
+    }
+
+    public function quick_search_submit() {
+        $post_data=array_filter($this->input->post(array("gender","religion","mothertongue","livein"),TRUE)); 
+        $to=$this->input->post("to");
+        $from=$this->input->post("from");
+        $this->view_data["pre_dataset"]=TRUE;
+        $this->view_data["pre_selected"]="quick";
+        $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data,$to,$from);
+        $this->load->view('profile/card', $this->view_data);
     }
 
 }
