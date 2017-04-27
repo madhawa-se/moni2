@@ -97,14 +97,17 @@
                             /* Portrait tablets and small desktops */
                             @media (min-width:992px) {
                                 .img3{
-                                    margin-left: 200px;
+                                    /*                                    margin-left: 200px;*/
                                 }
                             }
 
                         </style>
-                        <img id="map" class="img3 img-responsive" style="max-height:450px !important" src="<?php echo base_url() ?>images/map4.png" align="center">
+
+<!--                        <img id="" class="img3 img-responsive" style="max-height:450px !important" src="<?php echo base_url() ?>images/map4.png" align="center"/>-->
+                        <div id="map" class="img3" style="max-height:450px !important" align="center"></div>
 
                         </div>	
+
 
                         <!--content para end-->		
 
@@ -131,190 +134,190 @@
                         }
 
                     </style>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 align="center"><b>  An Exclusive Matrimoney Portal for <br>SriLankans around the world</b> </h3>
-                            <div class="well8">
+
+                    <div class="col-sm-6">
+                        <h3 align="center"><b>  An Exclusive Matrimoney Portal for <br>SriLankans around the world</b> </h3>
+                        <div class="well8">
 
 
-                                <form ng-cloak ng-validate="true" action="<?php echo site_url('home/register'); ?>" novalidate="true"  class="form-horizontal" method="post" name="regform" ng-controller="formController" ng-submit="submitForm($event, regform.$valid)">
+                            <form ng-cloak ng-validate="true" action="<?php echo site_url('home/register'); ?>" novalidate="true"  class="form-horizontal" method="post" name="regform" ng-controller="formController" ng-submit="submitForm($event, regform.$valid)">
 
-                                    <?php echo validation_errors() ?>
+                                <?php echo validation_errors() ?>
 
-                                    <legend><font color="#de3075" size="6px" >Register Free</font></legend>
+                                <legend><font color="#de3075" size="6px" >Register Free</font></legend>
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" >Profile for</label>
-                                        <div class="col-md-9">
-                                            <select id="profile" name="profile" ng-model="profile" class="form-control" ng-options="c.id as c.name  for c in profileForList track by c.id" required>
-                                                <option value="">--Select--</option>
-                                            </select>
-                                            <p ng-show="regform.profile.$invalid && (!regform.profile.$pristine || submitted)" class="help-danger help">Profile for is required.</p>
-
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="textinput" align="left">Name</label>
-                                        <div class="col-md-9">
-                                            <input id="name" ng-model="name" name="name" type="text" placeholder="Your Name" class="form-control input-md" required="">
-                                            <p ng-show="regform.name.$invalid && (!regform.name.$pristine || submitted)" class="help-danger help">You name is required.</p>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" >Profile for</label>
+                                    <div class="col-md-9">
+                                        <select id="profile" name="profile" ng-model="profile" class="form-control" ng-options="c.id as c.name  for c in profileForList track by c.id" required>
+                                            <option value="">--Select--</option>
+                                        </select>
+                                        <p ng-show="regform.profile.$invalid && (!regform.profile.$pristine || submitted)" class="help-danger help">Profile for is required.</p>
 
                                     </div>
+                                </div>
 
 
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="notifymode">Gender</label>
-                                        <div class="col-md-9">
-                                            <select id="gender" name="gender" class="form-control" ng-model="gender"  ng-options="c.id as c.name  for c in genders track by c.id" required >
-                                                <option value="">--Select--</option>
-                                            </select>
-                                            <p ng-show="regform.gender.$invalid && (!regform.gender.$pristine || submitted)" class="help-danger help">please select your gender</p>
 
-                                        </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="textinput" align="left">Name</label>
+                                    <div class="col-md-9">
+                                        <input id="name" ng-model="name" name="name" type="text" placeholder="Your Name" class="form-control input-md" required="">
+                                        <p ng-show="regform.name.$invalid && (!regform.name.$pristine || submitted)" class="help-danger help">You name is required.</p>
                                     </div>
 
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="notifymode">Date of Birth</label>
+                                </div>
 
 
-                                        <div class="col-md-2">
-                                            <select name="month" class = "form-control">
-                                                <option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option>
-                                                <option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option>
-                                                <option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option>
-                                                <option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <select name="day" class = "form-control">
-                                                <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
-                                                <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
-                                                <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
-                                                <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
-                                                <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="21">21</option>
-                                                <option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
-                                                <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option>
-                                                <option value="30">30</option><option value="31">31</option>
-                                            </select>                        
-                                        </div>
-                                        <div class="col-md-2">
-                                            <select name="year" class = "form-control">
-                                                <?php
-                                                if (isset($year_offset)) {
-                                                    for ($i = 0; $i < 100; $i++) {
-                                                        ?>
-                                                        <option value="<?php
-                                                        $year = ($year_offset - $i);
-                                                        echo $year
-                                                        ?>"><?php echo $year ?></option>
-                                                                <?php
-                                                            }
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="notifymode">Gender</label>
+                                    <div class="col-md-9">
+                                        <select id="gender" name="gender" class="form-control" ng-model="gender"  ng-options="c.id as c.name  for c in genders track by c.id" required >
+                                            <option value="">--Select--</option>
+                                        </select>
+                                        <p ng-show="regform.gender.$invalid && (!regform.gender.$pristine || submitted)" class="help-danger help">please select your gender</p>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="notifymode">Date of Birth</label>
+
+
+                                    <div class="col-md-2">
+                                        <select name="month" class = "form-control">
+                                            <option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option>
+                                            <option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option>
+                                            <option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option>
+                                            <option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="day" class = "form-control">
+                                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                            <option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option>
+                                            <option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option>
+                                            <option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option>
+                                            <option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="21">21</option>
+                                            <option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
+                                            <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option>
+                                            <option value="30">30</option><option value="31">31</option>
+                                        </select>                        
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select name="year" class = "form-control">
+                                            <?php
+                                            if (isset($year_offset)) {
+                                                for ($i = 0; $i < 100; $i++) {
+                                                    ?>
+                                                    <option value="<?php
+                                                    $year = ($year_offset - $i);
+                                                    echo $year
+                                                    ?>"><?php echo $year ?></option>
+                                                            <?php
                                                         }
-                                                        ?>
-                                            </select>
-                                        </div>
+                                                    }
+                                                    ?>
+                                        </select>
+                                    </div>
 
+                                </div>
+
+
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="threshold">Religion</label>
+                                    <div class="col-md-9">
+                                        <select id="religion" name="religion"  ng-model="religion_list" class="form-control" ng-options="c.id as c.name  for c in religionList track by c.id" required>
+                                            <option value="">--Select--</option>
+                                        </select>
+                                        <p ng-show="regform.religion.$invalid && (regform.religion.$touched || submitted)" class="help-danger help">select your religion</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="threshold">Mother Tongue</label>
+                                    <div class="col-md-9">
+                                        <select id="mothertongue" name="mothertongue" ng-model="lan_list" class="form-control" ng-options="c.id as c.name  for c in lanList track by c.id" required>
+                                            <option value="">--Select--</option>
+                                        </select>
+                                        <p ng-show="regform.mothertongue.$invalid && (regform.mothertongue.$touched || submitted)" class="help-danger help">select your language</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="textinput">Email</label>
+                                    <div class="col-md-9">
+                                        <input  name="email" ng-model="email" type="email" placeholder="Your Email Address" class="form-control input-md" required/>
+                                        <p ng-show="regform.email.$error.required && (!regform.email.$pristine || submitted)" class="help-danger help">You Email is required.</p>
+                                        <p ng-show="(!regform.email.$error.required && regform.email.$invalid) && (!regform.email.$pristine || submitted)" class="help-danger help">Enter a valid email</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="threshold">Living In</label>
+                                    <div class="col-md-9">
+                                        <select id="livein" name="livein" class="form-control" ng-model="country_list" ng-change="updateCountry(country_list)"
+                                                ng-options="c.id as c.name  for c in countryList track by c.id" required>
+
+                                            <option data-country_code="00" value="">--Select--</option>
+
+                                            <!-- <option ng-repeat="country in countryList" data-country_code="{{country.code}}" value="{{country.id}}">{{country.name}}</option>-->
+
+                                        </select>
+                                        <p ng-show="regform.livein.$invalid && (regform.livein.$touched || submitted)" class="help-danger help">country is required.</p>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="textinput">Phone</label>
+                                    <div class="col-md-3">
+                                        <input id="isd" name="countrycode" ng-model="countrycode" type="text" placeholder="Code" class="form-control input-md" required="" readonly="true">
                                     </div>
 
 
+                                    <div class="col-md-6">
+                                        <input id="fnumber" ng-model="fnumber" name="fnumber" type="number" placeholder="Number" class="form-control input-md" required>
+                                        <p ng-show="regform.fnumber.$invalid && (regform.fnumber.$touched || submitted)" class="help-danger help">Enter a valid phone number</p>
+                                    </div>
+                                </div>
 
 
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="threshold">Religion</label>
-                                        <div class="col-md-9">
-                                            <select id="religion" name="religion"  ng-model="religion_list" class="form-control" ng-options="c.id as c.name  for c in religionList track by c.id" required>
-                                                <option value="">--Select--</option>
-                                            </select>
-                                            <p ng-show="regform.religion.$invalid && (regform.religion.$touched || submitted)" class="help-danger help">select your religion</p>
-                                        </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="textinput">Password</label>
+                                    <div class="col-md-9">
+                                        <input id="password" ng-model="password" name="password" type="password" placeholder="Password" class="form-control input-md" ng-minlength="5" required>
+                                        <p ng-show="regform.password.$error.required && (regform.password.$touched || submitted)" class="help-danger help">Enter password</p>
+                                        <p ng-show="regform.password.$error.minlength && (regform.password.$touched || submitted)" class="help-danger help">Password should be at least 5 character</p>
                                     </div>
 
+                                </div>
 
 
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="threshold">Mother Tongue</label>
-                                        <div class="col-md-9">
-                                            <select id="mothertongue" name="mothertongue" ng-model="lan_list" class="form-control" ng-options="c.id as c.name  for c in lanList track by c.id" required>
-                                                <option value="">--Select--</option>
-                                            </select>
-                                            <p ng-show="regform.mothertongue.$invalid && (regform.mothertongue.$touched || submitted)" class="help-danger help">select your language</p>
-                                        </div>
-                                    </div>
+                                <div class="span3">
+                                    <label><input type="checkbox" ng-model="terms" name="terms" required=""> I agree with the <a href="#">Terms and Conditions</a>.</label>
+                                    <p ng-show="regform.terms.$invalid && (regform.terms.$touched || submitted)" class="help-danger help">Accept the terms & conditions to proceed further</p>
 
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="textinput">Email</label>
-                                        <div class="col-md-9">
-                                            <input  name="email" ng-model="email" type="email" placeholder="Your Email Address" class="form-control input-md" required/>
-                                            <p ng-show="regform.email.$error.required && (!regform.email.$pristine || submitted)" class="help-danger help">You Email is required.</p>
-                                            <p ng-show="(!regform.email.$error.required && regform.email.$invalid) && (!regform.email.$pristine || submitted)" class="help-danger help">Enter a valid email</p>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="threshold">Living In</label>
-                                        <div class="col-md-9">
-                                            <select id="livein" name="livein" class="form-control" ng-model="country_list" ng-change="updateCountry(country_list)"
-                                                    ng-options="c.id as c.name  for c in countryList track by c.id" required>
-
-                                                <option data-country_code="00" value="">--Select--</option>
-
-                                                <!-- <option ng-repeat="country in countryList" data-country_code="{{country.code}}" value="{{country.id}}">{{country.name}}</option>-->
-
-                                            </select>
-                                            <p ng-show="regform.livein.$invalid && (regform.livein.$touched || submitted)" class="help-danger help">country is required.</p>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="textinput">Phone</label>
-                                        <div class="col-md-3">
-                                            <input id="isd" name="countrycode" ng-model="countrycode" type="text" placeholder="Code" class="form-control input-md" required="" readonly="true">
-                                        </div>
-
-
-                                        <div class="col-md-6">
-                                            <input id="fnumber" ng-model="fnumber" name="fnumber" type="number" placeholder="Number" class="form-control input-md" required>
-                                            <p ng-show="regform.fnumber.$invalid && (regform.fnumber.$touched || submitted)" class="help-danger help">Enter a valid phone number</p>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="textinput">Password</label>
-                                        <div class="col-md-9">
-                                            <input id="password" ng-model="password" name="password" type="password" placeholder="Password" class="form-control input-md" ng-minlength="5" required>
-                                            <p ng-show="regform.password.$error.required && (regform.password.$touched || submitted)" class="help-danger help">Enter password</p>
-                                            <p ng-show="regform.password.$error.minlength && (regform.password.$touched || submitted)" class="help-danger help">Password should be at least 5 character</p>
-                                        </div>
-
-                                    </div>
-
-
-                                    <div class="span3">
-                                        <label><input type="checkbox" ng-model="terms" name="terms" required=""> I agree with the <a href="#">Terms and Conditions</a>.</label>
-                                        <p ng-show="regform.terms.$invalid && (regform.terms.$touched || submitted)" class="help-danger help">Accept the terms & conditions to proceed further</p>
-
-                                        <input name="register" type="submit" value="Sign up" class="button2" ng-click="submitted = true">
-                                    </div>
-                                </form>
-                            </div>
+                                    <input name="register" type="submit" value="Sign up" class="button2" ng-click="submitted = true">
+                                </div>
+                            </form>
                         </div>
                     </div>
+
                 </div>
 
 
@@ -719,11 +722,12 @@
 
 
     <script>
-        /* map code
+        //map code
         var map;
         function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
         zoom: 2,
+                backgroundColor: 'hsla(0, 0%, 0%, 0)',
                 center: new google.maps.LatLng(2.8, - 187.3),
                 styles: [
                 {
@@ -873,7 +877,7 @@
         });
         }
         }
-        */
+
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBH-6gXTaMmeqAhyVcdlkTbePb6nqSn0Kw&callback=initMap">

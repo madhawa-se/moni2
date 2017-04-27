@@ -1,6 +1,6 @@
 <?php
 
-class Reset extends CI_Controller {
+class Reset extends My_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -20,7 +20,7 @@ class Reset extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'required|callback_email_check');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view("reset");
+            $this->load->view("reset",$this->view_data);
         } else {
             echo 'correct';
             $rand = substr(md5(rand()), 0, 7);
@@ -53,7 +53,7 @@ class Reset extends CI_Controller {
             $status = $this->user_model->verify_reset($uid, $key);
             if ($status !== FALSE) {
                 echo 'you can reset now';
-                $this->load->view("reset_password");
+                $this->load->view("reset_password",$this->view_data);
             } else {
                 echo 'sorry!. either reset lnik expired or invalid';
             }

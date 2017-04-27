@@ -131,23 +131,12 @@
 
             </div>
         </article>
-        <footer class="footer">
-
-            <ul class="social-icon animate pull-right">
-                <div class="container">
 
 
-
-                    <font color="black"> <b>Follow Us : </b> </font>        <li><a style="background-color: #295396;" href="#" title="facebook" target="_blank"><i class="fa fa-facebook"></i></a></li> <!-- change the link to social page and edit title-->
-                    <li><a style="background-color:#1DA1F3;" href="#" title="twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                    <li><a style="background-color:#DF4A32;" href="#" title="google plus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
-        </footer>
-    </div>
-
-
-
-</div>
-
-</body>
+        <div class="container-fluid">
+            <div class="well8">
+                <?php echo $footer ?>
+            </div>
+        </div>
+    </body>
 </html>
