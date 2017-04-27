@@ -36,7 +36,7 @@
         <script>
             var baseurl = "<?php echo base_url(); ?>";
         </script>
-        <script src="<?php echo base_url() ?>js/resetpass.js?id=4"></script>
+        <script src="<?php echo base_url() ?>js/resetpass.js"></script>
     </head>
 
 
@@ -92,7 +92,7 @@
                         <div class="well8">
 
 
-                            <form ng-cloak ng-validate="true" action="<?php echo site_url('reset'); ?>" novalidate="true"  class="form-horizontal" method="post" name="regform" ng-controller="formResetController" ng-submit="submitForm($event, regform.$valid)">
+                            <form ng-validate="true" action="<?php echo site_url('reset/updatePassword'); ?>" novalidate="true"  class="form-horizontal" method="post" name="resetform" ng-controller="formResetController" ng-submit="submitForm($event, resetform.$valid)">
 
                                 <?php echo validation_errors() ?>
 
@@ -100,43 +100,42 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="textinput" align="left">New Password</label>
                                     <div class="col-md-9">
-                                        <input  name="pass1" ng-model="pass1" type="password" placeholder="Password" class="form-control input-md" required/>
-                                        <p ng-show="regform.pass1.$error.required && (!regform.pass1.$pristine || submitted)" class="help-danger help">Password is required.</p>
+
+                                        <input id="password" ng-model="password" name="password" type="password" placeholder="Password" class="form-control input-md" ng-minlength="5" required>
+                                        <p ng-show="resetform.password.$error.required && (resetform.password.$touched || submitted)" class="help-danger help">Enter password</p>
+                                        <p ng-show="resetform.password.$error.minlength && (resetform.password.$touched || submitted)" class="help-danger help">Password should be at least 5 character</p>
+                                        
+
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="textinput" align="left">Confirm Password</label>
                                     <div class="col-md-9">
-                                        <input  name="pass2" ng-model="registration.user.password" type="password" placeholder="Password" class="form-control input-md" required/>
+                                        <input  name="passwordconfirm" ng-model="passwordconfirm" type="password" placeholder="Password" class="form-control input-md"/>
 
-                                        <p ng-show="regform.pass1.$error.required && (!regform.pass1.$pristine || submitted)" class="help-danger help">Password is required.</p>
+                                        <p ng-show="resetform.passwordconfirm.$error && false" class="help-danger help">Password Must Match</p>
                                     </div>
                                 </div>
+                                <input type="hidden" hidden=""/>
                                 <div class="form-group">
                                     <div class="span3">
                                         <br>
                                         <input name="reset" type="submit" value="Reset Password" class="button2" ng-click="submitted = true">
                                     </div>
                                 </div>
-                                <input type="password" name="confirmPassword" 
-                                       ng-model="registration.user.confirmPassword"
-                                       required 
-                                       compare-to="registration.user.password" />
-                        </div>
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
+            </article>
 
+
+            <div class="container-fluid">
+                <div class="well8">
+                    <?php echo $footer ?>
+                </div>
             </div>
-        </article>
-
-
-        <div class="container-fluid">
-            <div class="well8">
-                <?php echo $footer ?>
-            </div>
-        </div>
-    </body>
-</html>
+        </body>
+    </html>

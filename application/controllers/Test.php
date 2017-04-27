@@ -16,7 +16,7 @@ class Test extends My_Controller {
     }
 
     function index() {
-        $this->load->view('profileview',$this->view_data);
+        echo $this->config->item('domain');
     }
 
 }

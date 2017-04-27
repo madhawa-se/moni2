@@ -284,7 +284,7 @@
 } ?>">
                                                                                         <img src="<?php if (isset($site)) {
     echo $site;
-} ?>images/logo.png" alt="Logo" valign="top" width='60' data-default="placeholder" data-max-width="100" ></a>
+} ?>images/logo5.png" alt="Logo" valign="top" width='60' data-default="placeholder" data-max-width="100" /></a>
                                                                                 </div>
                                                                             </div>
                                                                         </td>

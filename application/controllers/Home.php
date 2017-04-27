@@ -28,7 +28,7 @@ class Home extends My_Controller {
         $uname = $login_data["username"];
         ///echo ("hello $uname ! welcome back");
         $this->load->view('home', $this->view_data);
-        
+
         redirect('/profile');
     }
 
@@ -159,21 +159,20 @@ class Home extends My_Controller {
     function md5Dey($en_pass) {
         $this->load->library('encrypt');
         $de_pass = $this->encrypt->decode($en_pass, $this->config->item("encryption_key"));
-        echo $en_pass."   ".$this->config->item("encryption_key");
+        echo $en_pass . "   " . $this->config->item("encryption_key");
         return $de_pass;
     }
 
-    function sendActivateEmail($to_email,$name, $username, $password) {
+    function sendActivateEmail($to_email, $name, $username, $password) {
         $data = array();
         $subject = 'Marriage Proposal Sri Lanka, Lanka Matrimony, Brides Sri Lanka - Registration successful!';
         $data["title"] = "title";
         $data["action"] = "Your Account Activated !";
         $message = "Hi $name,
-You've successfully registered with loveheart .lk . Your account details as follows:
-<br>
-Username: $username<br>
-Password: $password<br>
-Thank you!
+You've successfully registered with $this->config->item('domain');
+Thank you!<br>
+Regards , 
+$this->config->item('domain')
 
 ";
 
@@ -185,12 +184,12 @@ Thank you!
         $data = array();
         $subject = 'Please validate your Marriage Proposal Sri Lanka';
         $data["title"] = "title";
-        $data["action"] = "Account Registration successful!";
+        $data["action"] = "Account Registration successful !";
         $message = "Hi $name,
 Please validate your registration by clicking on the following link: <link>
 Thank you!<br>
 Regards , 
-loveheart.lk
+$this->config->item('domain')
 ";
 
         $data["activate_url"] = base_url() . 'activate/' . $uid . '_' . $rand;
@@ -199,8 +198,8 @@ loveheart.lk
 
     function send_email($data, $subject, $view_name, $to_email, $message) {
 
-        $from_email = 'loveheart.lk';
-        $company_name = 'Love Heart';
+        $from_email = $this->config->item('domain');
+        $company_name = $this->config->item('company_name');;
         $site = base_url();
 
         $data["company_name"] = $company_name;

@@ -20,7 +20,7 @@ class Reset extends My_Controller {
         $this->form_validation->set_rules('email', 'Email', 'required|callback_email_check');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view("reset",$this->view_data);
+            $this->load->view("reset", $this->view_data);
         } else {
             echo 'correct';
             $rand = substr(md5(rand()), 0, 7);
@@ -37,7 +37,7 @@ class Reset extends My_Controller {
         if ($this->user_model->is_user_exist($str)) {
             return TRUE;
         } else {
-            $this->form_validation->set_message('email_check', 'cannot find a account associated with this email please check again');
+            $this->form_validation->set_message('email_check', 'Cannot find a account associated with this email. Please check again');
             return FALSE;
         }
     }
@@ -53,10 +53,22 @@ class Reset extends My_Controller {
             $status = $this->user_model->verify_reset($uid, $key);
             if ($status !== FALSE) {
                 echo 'you can reset now';
-                $this->load->view("reset_password",$this->view_data);
+                $this->load->view("reset_password", $this->view_data);
             } else {
-                echo 'sorry!. either reset lnik expired or invalid';
+                echo 'sorry!. Either reset linkis  expired or invalid';
             }
+        }
+    }
+
+    public function updatePassword() {
+        $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
+        $this->form_validation->set_rules('passwordconfirm', 'Passwordconfirm', 'required|matches[password]');
+        
+        if($this->form_validation->run()){
+            echo  'success';
+        }else{
+            echo 'fail';
+            $this->load->view('reset_password',$this->view_data);
         }
     }
 

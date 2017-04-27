@@ -1,16 +1,4 @@
 var app = angular.module('myapp', []);
-app.directive("compareTo", compareTo);
-app.controller('formResetController', function ($scope, $http, $filter) {
-    $scope.x = 10;
-
-    $scope.submitForm = function ($event, $valid) {
-        //alert(isValid);
-        if (!$valid) {
-            $event.preventDefault();
-        }
-    };
-});
-
 var compareTo = function() {
     return {
         require: "ngModel",
@@ -20,6 +8,7 @@ var compareTo = function() {
         link: function(scope, element, attributes, ngModel) {
              
             ngModel.$validators.compareTo = function(modelValue) {
+                console.log(modelValue + "   " +scope.otherModelValue);
                 return modelValue == scope.otherModelValue;
             };
  
@@ -29,3 +18,7 @@ var compareTo = function() {
         }
     };
 };
+app.directive("compareTo", compareTo);
+app.controller('formResetController', function ($scope, $http, $filter) {
+    
+});
