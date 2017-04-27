@@ -80,13 +80,14 @@
                     <div class="col-sm-6">
                         <div class="wel">
 
-                            <h3><b>Welcome to newleaf.lk the largest <br> matrimonial in Sri Lanka</b></h3>
-                            <p align="justify">SriLankanMatrimony is an exclusive matrimony portal for Sri Lankans  
-                                from around the world to find a life partner. SriLankanMatrimony bridges the  
-                                between you and your life partner no matter where he or she is. Meet singles
-                                from around the world to find a life partner. SriLankanMatrimony bridges the   
-                                between you and your life partner no matter where he or she is. Meet singles
-                                walks of life and discover the one who will be with you forever.
+                            <h3><b>Welcome to <?php echo $domain?> the largest <br> matrimonial in Sri Lanka</b></h3>
+                            <p align="justify"><?php echo $domain?> is an exclusive matrimony portal for Sri Lankans from around the world to find a life partner. We are making a bridge the between you and your life partner no matter where he or she is. Meet singles from around the world to find a life partner.
+
+Best and Most trusted website for the Sri Lankan Marriage Proposals and Matrimonial. We offer Services that deepen the trust of our members with detailed Manual Screening of every activity.
+
+ 
+
+<?php echo $domain?> provides a pleasant, satisfying, and superior matchmaking experience to our members while zealously protecting their privacy and security. Every aspect of our site has been constructed with secure matrimonial as the central focus.
 
                             </p>
                         </div>
@@ -164,7 +165,7 @@
                                     <label class="col-md-3 control-label" for="textinput" align="left">Name</label>
                                     <div class="col-md-9">
                                         <input id="name" ng-model="name" name="name" type="text" placeholder="Your Name" class="form-control input-md" required="">
-                                        <p ng-show="regform.name.$invalid && (!regform.name.$pristine || submitted)" class="help-danger help">You name is required.</p>
+                                        <p ng-show="regform.name.$invalid && (!regform.name.$pristine || submitted)" class="help-danger help">Your name is required.</p>
                                     </div>
 
                                 </div>
@@ -177,7 +178,7 @@
                                         <select id="gender" name="gender" class="form-control" ng-model="gender"  ng-options="c.id as c.name  for c in genders track by c.id" required >
                                             <option value="">--Select--</option>
                                         </select>
-                                        <p ng-show="regform.gender.$invalid && (!regform.gender.$pristine || submitted)" class="help-danger help">please select your gender</p>
+                                        <p ng-show="regform.gender.$invalid && (!regform.gender.$pristine || submitted)" class="help-danger help">Please select your gender</p>
 
                                     </div>
                                 </div>
@@ -236,7 +237,7 @@
                                         <select id="religion" name="religion"  ng-model="religion_list" class="form-control" ng-options="c.id as c.name  for c in religionList track by c.id" required>
                                             <option value="">--Select--</option>
                                         </select>
-                                        <p ng-show="regform.religion.$invalid && (regform.religion.$touched || submitted)" class="help-danger help">select your religion</p>
+                                        <p ng-show="regform.religion.$invalid && (regform.religion.$touched || submitted)" class="help-danger help">Select your religion</p>
                                     </div>
                                 </div>
 
@@ -248,7 +249,7 @@
                                         <select id="mothertongue" name="mothertongue" ng-model="lan_list" class="form-control" ng-options="c.id as c.name  for c in lanList track by c.id" required>
                                             <option value="">--Select--</option>
                                         </select>
-                                        <p ng-show="regform.mothertongue.$invalid && (regform.mothertongue.$touched || submitted)" class="help-danger help">select your language</p>
+                                        <p ng-show="regform.mothertongue.$invalid && (regform.mothertongue.$touched || submitted)" class="help-danger help">Select your language</p>
                                     </div>
                                 </div>
 
@@ -258,7 +259,7 @@
                                     <label class="col-md-3 control-label" for="textinput">Email</label>
                                     <div class="col-md-9">
                                         <input  name="email" ng-model="email" type="email" placeholder="Your Email Address" class="form-control input-md" required/>
-                                        <p ng-show="regform.email.$error.required && (!regform.email.$pristine || submitted)" class="help-danger help">You Email is required.</p>
+                                        <p ng-show="regform.email.$error.required && (!regform.email.$pristine || submitted)" class="help-danger help">Your Email is required.</p>
                                         <p ng-show="(!regform.email.$error.required && regform.email.$invalid) && (!regform.email.$pristine || submitted)" class="help-danger help">Enter a valid email</p>
                                     </div>
                                 </div>
@@ -276,7 +277,7 @@
                                             <!-- <option ng-repeat="country in countryList" data-country_code="{{country.code}}" value="{{country.id}}">{{country.name}}</option>-->
 
                                         </select>
-                                        <p ng-show="regform.livein.$invalid && (regform.livein.$touched || submitted)" class="help-danger help">country is required.</p>
+                                        <p ng-show="regform.livein.$invalid && (regform.livein.$touched || submitted)" class="help-danger help">Country is required.</p>
                                     </div>
                                 </div>
 

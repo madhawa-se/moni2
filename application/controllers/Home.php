@@ -55,6 +55,7 @@ class Home extends My_Controller {
                 $this->reg_submit();
             } else {
                 $this->view_data['reg_errors'] = validation_errors();
+                $this->load_home();
             }
         } else if ($this->input->post('login')) {
             $this->form_validation->set_rules('user', 'user name', 'required');
@@ -66,14 +67,23 @@ class Home extends My_Controller {
             } else {
                 $this->view_data['login_errors'] = validation_errors();
             }
+            $this->load_home();
+        } else {
+            $this->load_home();
         }
+    }
+
+    private function load_home() {
         $this->view_data['countries'] = $this->reg_model->get_contry_list();
 
         $timestamp = strtotime('-18 years');
         $date = date('Y', $timestamp);
         $date = intval($date);
         $this->view_data['year_offset'] = $date;
-
+        
+        $this->view_data['domain'] = $this->config->item('domain');
+        $this->view_data['company_name'] = $this->config->item('company_name');
+        
         $this->load->view('home', $this->view_data);
     }
 
@@ -101,8 +111,9 @@ class Home extends My_Controller {
         $date->setDate($this->input->post('year'), $this->input->post('month'), $this->input->post('day'));
         $date = $date->format('Y-m-d');
         $today = date('Y-m-d');
+        $name = $this->input->post('name');
         $data = array(
-            'name' => $this->input->post('name'),
+            'name' => $name,
             'email' => $this->input->post('email'),
             'password' => md5($this->input->post('password')),
             'rand' => $random,
@@ -123,8 +134,13 @@ class Home extends My_Controller {
         } else {
             $insert_id = $status;
             // send email
-            if ($this->sendRegEmail($this->input->post('email'), $insert_id, $random, $this->input->post('name'))) {
-                echo 'email sent please check your email address';
+            if ($this->sendRegEmail($this->input->post('email'), $insert_id, $random, $this->input->post('name')) || true) {
+                $this->view_data['domain'] = $this->config->item('domain');
+                $this->view_data['name'] = $name;
+                $this->view_data['company_name'] = $this->config->item('company_name');
+                $this->load->view("status/success", $this->view_data);
+            } else {
+                echo 'email failed';
             }
         }
     }
@@ -149,7 +165,7 @@ class Home extends My_Controller {
 
     public function email_check($str) {
         if ($this->user_model->is_user_exist($str)) {
-            $this->form_validation->set_message('email_check', 'already a memmber try login');
+            $this->form_validation->set_message('email_check', 'User Has Already registered. Please Try To Login');
             return FALSE;
         } else {
             return TRUE;
@@ -169,7 +185,7 @@ class Home extends My_Controller {
         $data["title"] = "title";
         $data["action"] = "Your Account Activated !";
         $message = "Hi $name,
-You've successfully registered with $this->config->item('domain');
+You've successfully registered with {$this->config->item('domain')};
 Thank you!<br>
 Regards , 
 $this->config->item('domain')
@@ -193,13 +209,14 @@ Regards ,
 ";
 
         $data["activate_url"] = base_url() . 'activate/' . $uid . '_' . $rand;
-        $this->send_email($data, $subject, "email_templates/reg", $to_email, $message);
+        return $this->send_email($data, $subject, "email_templates/reg", $to_email, $message);
     }
 
     function send_email($data, $subject, $view_name, $to_email, $message) {
 
         $from_email = $this->config->item('domain');
-        $company_name = $this->config->item('company_name');;
+        $company_name = $this->config->item('company_name');
+        ;
         $site = base_url();
 
         $data["company_name"] = $company_name;
