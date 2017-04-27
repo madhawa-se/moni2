@@ -189,7 +189,7 @@ $this->config->item('domain')
 Please validate your registration by clicking on the following link: <link>
 Thank you!<br>
 Regards , 
-$this->config->item('domain')
+        {$this->config->item('domain')}
 ";
 
         $data["activate_url"] = base_url() . 'activate/' . $uid . '_' . $rand;
