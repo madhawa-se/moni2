@@ -6,7 +6,7 @@
 
             </div>
             <div class="avatar">
-                <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                <img alt="" src="<?php echo base_url().'uploads/'.(($profile->user_id!==NULL) ? $profile->user_id : 'defaults/default').'.jpg' ;?>">
             </div>
             <div class="info">
                 <div class="title">

@@ -117,7 +117,13 @@ class Profile extends uploadable {
         // insert form data into database
         $uid = $this->get_log_user_id();
         $status = $this->user_model->updateUser($uid, $data);
-        $this->do_upload($uid);
+        $upload_state=$this->do_upload($uid);
+        if($upload_state){
+            $pic_status = $this->user_model->update_pic($uid);
+            echo 'profile pic update is failed';
+        }else{
+            echo 'profile updated succefully';
+        }
         if ($status === FALSE) {
             echo 'profile update is failed';
         } else {

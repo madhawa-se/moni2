@@ -237,7 +237,7 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                     </button>
-                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="http://rolyart.ro/wp-content/uploads/2016/07/roland-maruntelu-freelancer-romania.jpg"></a>
+                                    <a class="navbar-brand" href="#"><img class="img-responsive" src="<?php echo base_url().'uploads/'.(($user_data->user_id!==NULL) ? $user_data->user_id : 'defaults/default').'.jpg' ;?>"></a>
                                     <span class="site-name"><b><?php echo $user_data->name?></b></span>
                                     <span class="site-description">works at</span>
                                 </div>

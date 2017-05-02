@@ -59,10 +59,10 @@ class uploadable extends My_Controller {
 
         if (!$this->upload->do_upload('profile_pic')) {
             $error = array('error' => $this->upload->display_errors());
-
-            var_dump($error);
+            return FALSE;
         } else {
             $data = array('upload_data' => $this->upload->data());
+            return TRUE;
         }
     }
 

@@ -198,7 +198,7 @@
         }
 
         .card.hovercard .cardheader {
-            background: url("http://cdn.wallpapersafari.com/90/6/wd7V9h.jpg");
+            background: url("http://lorempixel.com/400/200/");
             background-size: cover;
             height: 135px;
         }

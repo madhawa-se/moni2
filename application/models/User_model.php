@@ -63,6 +63,12 @@ class user_model extends CI_Model {
         }
     }
 
+    function update_pic($uid) {
+        $sql = 'INSERT INTO pic (user_id, state)VALUES (?, ?) ON DUPLICATE KEY UPDATE state=0';
+        $query = $this->db->query($sql, array($uid,1));
+        var_dump($query);
+    }
+
     function verifyEmailID($id, $key) {
         $data = array('activation' => 1);
         $this->db->from('user');
@@ -175,6 +181,7 @@ class user_model extends CI_Model {
 
     function get_user_by_id($id) {
         $this->db->from('user');
+        $this->db->join('pic', 'user.id = pic.user_id','left');
         $this->db->where('id', $id);
         $query = $this->db->get();
 
