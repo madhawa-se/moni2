@@ -80,10 +80,10 @@ class Home extends My_Controller {
         $date = date('Y', $timestamp);
         $date = intval($date);
         $this->view_data['year_offset'] = $date;
-        
+
         $this->view_data['domain'] = $this->config->item('domain');
         $this->view_data['company_name'] = $this->config->item('company_name');
-        
+
         $this->load->view('home', $this->view_data);
     }
 
@@ -134,7 +134,7 @@ class Home extends My_Controller {
         } else {
             $insert_id = $status;
             // send email
-            if ($this->sendRegEmail($this->input->post('email'), $insert_id, $random, $this->input->post('name')) || true) {
+            if ($this->sendRegEmail($this->input->post('email'), $insert_id, $random, $this->input->post('name'))) {
                 $this->view_data['domain'] = $this->config->item('domain');
                 $this->view_data['name'] = $name;
                 $this->view_data['company_name'] = $this->config->item('company_name');
@@ -155,8 +155,12 @@ class Home extends My_Controller {
             //echo ($uid . ' x ' . $key);
             $status = $this->user_model->verifyEmailID($uid, $key);
             if ($status !== FALSE) {
-                echo 'account activated succefully<br>.login here';
                 $this->sendActivateEmail($status->email, $status->name, $status->email, $this->md5Dey($status->password));
+                /* important : create a function to get basic domain..etc information */
+                $this->view_data['domain'] = $this->config->item('domain');
+                $this->view_data['name'] = $status->name;
+                $this->view_data['company_name'] = $this->config->item('company_name');
+                $this->load->view("status/account_activated", $this->view_data);
             } else {
                 echo 'sorry!. account activation failed';
             }
@@ -175,7 +179,6 @@ class Home extends My_Controller {
     function md5Dey($en_pass) {
         $this->load->library('encrypt');
         $de_pass = $this->encrypt->decode($en_pass, $this->config->item("encryption_key"));
-        echo $en_pass . "   " . $this->config->item("encryption_key");
         return $de_pass;
     }
 
@@ -187,9 +190,8 @@ class Home extends My_Controller {
         $message = "Hi $name,
 You've successfully registered with {$this->config->item('domain')};
 Thank you!<br>
-Regards , 
-$this->config->item('domain')
-
+Regards ,
+{$this->config->item('domain')}
 ";
 
         $data["login_url"] = base_url();
@@ -204,7 +206,7 @@ $this->config->item('domain')
         $message = "Hi $name,
 Please validate your registration by clicking on the following link: <link>
 Thank you!<br>
-Regards , 
+Regards ,
         {$this->config->item('domain')}
 ";
 
@@ -229,7 +231,7 @@ Regards ,
         $content = $this->load->view($view_name, $data, TRUE);
         $data["subject"] = $subject;
 
-        $config['protocol'] = 'sendmail';
+        $config['protocol'] = 'mail';
         $config['mailtype'] = 'html';
         $config['wordwrap'] = TRUE;
         $config['newline'] = "\r\n";

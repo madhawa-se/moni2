@@ -272,10 +272,10 @@
     <div class="row" ng-controller="searchCTRL">
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#tab_a" data-toggle="pill">Search</a></li>
-                <li><a href="#tab_b" data-toggle="pill">Advanced Search</a></li>
-                <li><a href="#tab_c" data-toggle="pill">Quick Search</a></li>
-                <li><a href="#tab_d" data-toggle="pill">Short List</a></li>
+                <li <?php if(isset($active) && $active=="search"){echo 'class="active"';} ?> ><a href="#tab_a" data-toggle="pill">Search</a></li>
+                <li <?php if(isset($active) && $active=="adavance_search"){echo 'class="active"';} ?> ><a href="#tab_b" data-toggle="pill">Advanced Search</a></li>
+                <li <?php if(isset($active) && $active=="quick_search"){echo 'class="active"';} ?> ><a href="#tab_c" data-toggle="pill">Quick Search</a></li>
+                <li <?php if(isset($active) && $active=="short_list"){echo 'class="active"';} ?> ><a href="#tab_d" data-toggle="pill">Short List</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -290,9 +290,11 @@
                         </div>
                     </form>
                 </div>
-                <div ng-include="'<?php echo base_url() ?>search/search_all'">
+                <div class="result-pane">
 
+                    <?php if(isset($preset) && isset($search_result)){echo $search_result ;} ?>
                 </div>
+                
 
             </div>
 

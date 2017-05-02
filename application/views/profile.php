@@ -238,15 +238,15 @@ if (isset($jsondata)) {
                                         <ul class="nav navbar-nav navbar-right">
                                             <li>
 
-
-                                                <a href="#">
-                                                    <!--
-                                                    <span class="glyphicon glyphicon-user"></span>
-                                                    <?php // echo $uname ?> 
-                                                    -->
-                                                    <img class="img-circle profile-pic" src="<?php echo $pic ?>" />
-                                                </a>
-
+                                                <?php if (isset($pic)) { ?>
+                                                    <a href="#">
+                                                        <!--
+                                                        <span class="glyphicon glyphicon-user"></span>
+                                                        <?php // echo $uname ?> 
+                                                        -->
+                                                        <img class="img-circle profile-pic" src="<?php echo $pic ?>" />
+                                                    </a>
+                                                <?php } ?>
                                             </li>
                                             <li><a href="<?php echo site_url('user/logout') ?>"><span class="glyphicon  glyphicon-off"></span> Logout</a></li>
                                         </ul>
@@ -362,9 +362,9 @@ if (isset($jsondata)) {
 
             <!--footer-->
 
-     
-<?php echo $footer ?>
-           
+
+            <?php echo $footer ?>
+
 
 
 

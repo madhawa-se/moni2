@@ -17,10 +17,15 @@ class Search_model extends CI_Model {
     public function search_quick($array,$to,$from) {
         $this->db->from('user');
         $this->db->where($array);
-        //$this->db->where('age >=', minvalue);
-        //$this->db->where('$accommodation <=', maxvalue);
+        $this->db->where('birthday <=', $this->get_birth_date("-$from"));
+        $this->db->where('birthday >', $this->get_birth_date("-$to"));
+        //echo $this->db->last_query();
         return $this->db->get()->result();
         //var_dump($this->db->last_query());
+    }
+    private function get_birth_date($age){
+        $date = date('Y-m-d', strtotime("$age years"));
+        return $date;
     }
 
 }

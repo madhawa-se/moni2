@@ -95,14 +95,12 @@ class user_model extends CI_Model {
 
     function verify_reset($id, $key) {
 
-        echo $id . "<br>";
-        echo $key . "<br>";
+
         $this->db->from('reset');
         $this->db->where('user_id', $id);
         $query = $this->db->get();
 
         if ($query->num_rows() == 1) {
-            echo 'in';
             $result = $query->row();
             if ($result->rand == $key) {
 
@@ -125,7 +123,6 @@ class user_model extends CI_Model {
         $query = $this->db->get();
         $ret = $query->num_rows();
         if ($ret >= 1) {
-            //echo 'in';
             $result = $query->row();
             if ($result->activation == 1) {
                 return true;

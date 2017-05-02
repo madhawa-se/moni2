@@ -234,6 +234,37 @@
 
             }
 
+            /* mad style*/
+
+            .title-x{
+                font-size:20px;
+                color: #48BBB7;
+                font-weight: bold;
+            }
+            .dark{
+                color: #9e9ea4;
+                font-weight: bold;
+            }
+            .dark-light{
+                color: #aaaaaa;
+            }
+            .p-content{
+                width: 75%;
+                margin: 0 auto;
+                margin-top: 20px;
+            }
+            .button-x{
+                background-color: #24ceaa;
+                padding: 5px 10px;
+                color: white;
+                border-radius: 100px;
+                font-weight: 600;
+            }
+            .link-x{
+                font-size: 12px;
+                font-weight: 600;
+                color: #f33da4;
+            }
         </style>
 
 
@@ -279,12 +310,16 @@
                                                                         <td width='100' align="center" class="specbundle2">
                                                                             <div class='contentEditableContainer contentImageEditable'>
                                                                                 <div class='contentEditable'>
-                                                                                    <a target='_blank' href="<?php if (isset($site)) {
-    echo $site;
-} ?>">
-                                                                                        <img src="<?php if (isset($site)) {
-    echo $site;
-} ?>images/logo5.png" alt="Logo" valign="top" width='60' data-default="placeholder" data-max-width="100" /></a>
+                                                                                    <a target='_blank' href="<?php
+                                                                                    if (isset($site)) {
+                                                                                        echo $site;
+                                                                                    }
+                                                                                    ?>">
+                                                                                        <img src="<?php
+                                                                                        if (isset($site)) {
+                                                                                            echo $site;
+                                                                                        }
+                                                                                        ?>images/logo5.png" alt="Logo" valign="top" width='60' data-default="placeholder" data-max-width="100" /></a>
                                                                                 </div>
                                                                             </div>
                                                                         </td>
@@ -299,11 +334,15 @@
                                                                                         </tr>
                                                                                         <tr>
                                                                                             <td height="40" colspan="2" align="center">
-                                                                                                <h1 class='big'><a target='_blank' href="<?php if (isset($site)) {
-    echo $site;
-} ?>" style='color:#444444'><span class="font"><?php if (isset($company_name)) {
-    echo $company_name;
-} ?></span></a></h1>
+                                                                                                <h1 class='big'><a target='_blank' href="<?php
+                                                                                                    if (isset($site)) {
+                                                                                                        echo $site;
+                                                                                                    }
+                                                                                                    ?>" style='color:#444444'><span class="font"><?php
+                                                                                                                   if (isset($company_name)) {
+                                                                                                                       echo $company_name;
+                                                                                                                   }
+                                                                                                                   ?></span></a></h1>
                                                                                             </td>
                                                                                         </tr>
                                                                                         <tr>
@@ -352,13 +391,17 @@
                                                                                     <td>
                                                                                         <div class='contentEditableContainer contentTextEditable'>
                                                                                             <div class='contentEditable' style='text-align: center;'>
-                                                                                                <h2 style="font-size: 20px;"><?php if (isset($action)) {
-    echo $action;
-} ?></h2>
+                                                                                                <h2 class="title-x"><?php
+                                                                                                    if (isset($action)) {
+                                                                                                        echo $action;
+                                                                                                    }
+                                                                                                    ?></h2>
                                                                                                 <br>
-                                                                                                    <p><?php if (isset($message)) {
-    echo $message;
-} ?> </p>
+                                                                                                    <p><?php
+                                                                                                        if (isset($message)) {
+                                                                                                            echo $message;
+                                                                                                        }
+                                                                                                        ?> </p>
                                                                                                     <br>
                                                                                                         <p><a style="
                                                                                                               background-color: #a632ce;
@@ -366,7 +409,7 @@
                                                                                                               color: white;
                                                                                                               border-radius: 100px;
                                                                                                               font-weight: 600;"
-                                                                                                              href="<?php echo $activate_url?>">Activate My Account</a></p>
+                                                                                                              href="<?php echo $activate_url ?>">Activate My Account</a></p>
 
                                                                                                         </div>
                                                                                                         </div>
