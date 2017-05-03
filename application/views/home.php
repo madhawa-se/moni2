@@ -418,10 +418,10 @@
                                 <label for="name">Religion</label><br>
                                 <select id="religion" name="religion" class="form-control">
                                     <option value="">  &nbsp; &nbsp;&nbsp;&nbsp; --Select-- &nbsp; &nbsp;&nbsp;&nbsp; </option>
-                                    <option value="1">Hindu</option>
-                                    <option value="2">Christian</option>
-                                    <option value="1">Muslim</option>
-                                    <option value="2">Buddism</option>
+                                    <option value="1">Buddhisum</option>
+                                    <option value="2">Cristian</option>
+                                    <option value="3">Muslim</option>
+                                    <option value="4">Hindu</option>
                                 </select>
                             </div>
 

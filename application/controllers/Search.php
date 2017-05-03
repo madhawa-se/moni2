@@ -38,7 +38,6 @@ class Search extends My_Controller {
         $this->view_data["preset"] = TRUE;
         $this->view_data["active"] = "quick_search";
         $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from);
-       // var_dump($this->Search_model->search_quick($post_data, $to, $from));
         $this->view_data['search_result']=$this->load->view('profile/card', $this->view_data,TRUE);
         $this->search();
     }

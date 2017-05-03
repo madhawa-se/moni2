@@ -344,13 +344,16 @@
                         </div>
                     </form>
                 </div>
-                <div class="result-pane">
+                <div class="col-sm-12 result-pane">
 
                     <?php
                     if (isset($preset) && isset($search_result)) {
                         echo $search_result;
                     }
                     ?>
+                </div>
+                <div class="centered">
+                    <button class="button-x button3">Load More</button>
                 </div>
 
 
