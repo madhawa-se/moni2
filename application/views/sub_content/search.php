@@ -1,5 +1,6 @@
-
+<link href="<?php echo base_url() ?>css/flag-icon.min.css" rel="stylesheet">
 <div class="container">
+
     <style>
 
 
@@ -262,20 +263,73 @@
             background-color: black;
             opacity: 0.0;
         }
+        .card.hovercard .cardheader {
+            text-align: left;
+        }
         .hovercard:hover > .color-overlay{
-            opacity: 0.6;
+            opacity: 0.8;
+        }
+        .color-overlay .list-group-item{
+            background-color:none;
+            color: #7eff06;
+            font-weight: bold;
+            font-family: roboto;
+        }
+        .cardheader .flag-icon{
+            width: 60px;
+            height: 30px;
+        }
+
+
+        .icon-bar {
+            width: 90px;
+            background-color: #555;
+        }
+
+        .icon-bar a {
+            display: block;
+            text-align: center;
+            padding: 16px;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: 36px;
+        }
+
+        .icon-bar a:hover {
+            background-color: #000;
+        }
+
+        .icon-bar .active {
+            background-color: #4CAF50 !important;
         }
     </style>
+
 
     <script src="<?php echo base_url() ?>js/search.js"></script>
 
     <div class="row" ng-controller="searchCTRL">
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
-                <li <?php if(isset($active) && $active=="search"){echo 'class="active"';} ?> ><a href="#tab_a" data-toggle="pill">Search</a></li>
-                <li <?php if(isset($active) && $active=="adavance_search"){echo 'class="active"';} ?> ><a href="#tab_b" data-toggle="pill">Advanced Search</a></li>
-                <li <?php if(isset($active) && $active=="quick_search"){echo 'class="active"';} ?> ><a href="#tab_c" data-toggle="pill">Quick Search</a></li>
-                <li <?php if(isset($active) && $active=="short_list"){echo 'class="active"';} ?> ><a href="#tab_d" data-toggle="pill">Short List</a></li>
+                <li <?php
+                if (isset($active) && $active == "search") {
+                    echo 'class="active"';
+                }
+                ?> ><a href="#tab_a" data-toggle="pill">Search</a></li>
+                <li <?php
+                if (isset($active) && $active == "advance_search") {
+                    echo 'class="active"';
+                }
+                ?> ><a href="#tab_b" data-toggle="pill">Advanced Search</a></li>
+                <li <?php
+                if (isset($active) && $active == "quick_search") {
+                    echo 'class="active"';
+                }
+                ?> ><a href="#tab_c" data-toggle="pill">Quick Search</a></li>
+                <li <?php
+                if (isset($active) && $active == "short_list") {
+                    echo 'class="active"';
+                }
+                ?> ><a href="#tab_d" data-toggle="pill">Short List</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -292,9 +346,13 @@
                 </div>
                 <div class="result-pane">
 
-                    <?php if(isset($preset) && isset($search_result)){echo $search_result ;} ?>
+                    <?php
+                    if (isset($preset) && isset($search_result)) {
+                        echo $search_result;
+                    }
+                    ?>
                 </div>
-                
+
 
             </div>
 
