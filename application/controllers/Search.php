@@ -45,7 +45,7 @@ class Search extends My_Controller {
         $post_data = array_filter($this->input->post(array("gender", "religion", "mothertongue", "livein"), TRUE));
         $to = $this->input->post("to");
         $from = $this->input->post("from");
-        $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from);
+        $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from,$start);
         $this->view_data['search_result']=$this->load->view('profile/card', $this->view_data,TRUE);
         //var_dump($this->db->last_query());
         $array=array("amount"=>10,"result"=>$this->view_data['search_result']);

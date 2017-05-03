@@ -2,7 +2,7 @@ var app = angular.module('myapp', ['ngRoute','ngSanitize']);
 
 app.controller('searchCTRL', function ($scope, $http, $filter) {
     $scope.search = {};
-    $scope.quick_result="waiting";
+    $scope.quick_result="";
     $scope.search.quick = {start: 0, end: 0, more: true, };
 
 
@@ -18,7 +18,8 @@ app.controller('searchCTRL', function ($scope, $http, $filter) {
             data: formData,
         }).then(function mySucces(response) {
             console.log(response.data);
-             $scope.quick_result=(response.data.data.result);
+             $scope.quick_result+=(response.data.data.result);
+             $scope.search.quick.start+=response.data.data.amount;
         }, function myError(response) {
             alert(response.statusText);
         });
