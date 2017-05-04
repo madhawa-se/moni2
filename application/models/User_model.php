@@ -65,7 +65,7 @@ class user_model extends CI_Model {
 
     function update_pic($uid) {
         $sql = 'INSERT INTO pic (user_id, state)VALUES (?, ?) ON DUPLICATE KEY UPDATE state=0';
-        $query = $this->db->query($sql, array($uid,1));
+        $query = $this->db->query($sql, array($uid, 1));
         var_dump($query);
     }
 
@@ -181,7 +181,7 @@ class user_model extends CI_Model {
 
     function get_user_by_id($id) {
         $this->db->from('user');
-        $this->db->join('pic', 'user.id = pic.user_id','left');
+        $this->db->join('pic', 'user.id = pic.user_id', 'left');
         $this->db->where('id', $id);
         $query = $this->db->get();
 
@@ -199,6 +199,14 @@ class user_model extends CI_Model {
         $data = $user_data;
         $json_data = json_encode($data);
         return $json_data;
+    }
+
+    function short_list($target_id) {
+        //note : already listed should be validated
+        $uid = get_logged_user_id();
+        $data=array("user_id"=>$uid,"listed_user_id"=>$target_id);
+        $state = $this->db->insert('shortlist', $data);
+        return $state;
     }
 
 }

@@ -1,8 +1,45 @@
-var app = angular.module('myapp', ['ngRoute','ngSanitize']);
+var app = angular.module('myapp', ['ngRoute', 'ngSanitize']);
 
+app.directive('shortlist', function ($http,$compile) {
+
+    var addToList = function (target_id, callback) {
+        $http({
+            method: "POST",
+            url: baseurl + "user/shortlist/" + target_id,
+        }).then(function mySucces(response) {
+            //alert(response.data);
+            callback(target_id, true);
+        }, function myError(response) {
+            //alert(response.statusText);
+            callback(target_id, false);
+        });
+    };
+    return {
+        restrict: 'E',
+        transclude: 'true',
+
+        template: '<a href="#"><span><i class="fa fa fa-star"></i><span></a>',
+        link: function (scope, element, attr) {
+            //var template='<a href="#"><span><i class="fa fa fa-star"></i><span></a>';
+            //var content = $compile(template)(scope);
+            //element.append(content);
+            
+            element.bind('click', function () {
+                element.addClass("spin");
+                addToList(attr.uid, callback);
+            });
+            var callback = function (id, state) {
+                element.removeClass("spin");
+                if (state) {
+                    element.addClass("star");
+                }
+            };
+        }
+    };
+});
 app.controller('searchCTRL', function ($scope, $http, $filter) {
     $scope.search = {};
-    $scope.quick_result="";
+    $scope.quick_result = "";
     $scope.search.quick = {start: 0, end: 0, more: true, };
 
 
@@ -18,8 +55,8 @@ app.controller('searchCTRL', function ($scope, $http, $filter) {
             data: formData,
         }).then(function mySucces(response) {
             console.log(response.data);
-             $scope.quick_result+=(response.data.data.result);
-             $scope.search.quick.start+=response.data.data.amount;
+            $scope.quick_result += (response.data.data.result);
+            $scope.search.quick.start += response.data.data.amount;
         }, function myError(response) {
             alert(response.statusText);
         });

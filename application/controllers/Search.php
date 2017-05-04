@@ -13,7 +13,7 @@ class Search extends My_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("Search_model");
-        $this->load->model("User_model","user_model");
+        $this->load->model("User_model", "user_model");
     }
 
     public function search_all() {
@@ -38,21 +38,20 @@ class Search extends My_Controller {
         $this->view_data["preset"] = TRUE;
         $this->view_data["active"] = "quick_search";
         $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from);
-        $this->view_data['search_result']=$this->load->view('profile/card', $this->view_data,TRUE);
+        $this->view_data['search_result'] = $this->load->view('profile/card', $this->view_data, TRUE);
         $this->search();
     }
+
     public function quick_search_base($start) {
         $post_data = array_filter($this->input->post(array("gender", "religion", "mothertongue", "livein"), TRUE));
         $to = $this->input->post("to");
         $from = $this->input->post("from");
-        $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from,$start);
-        $this->view_data['search_result']=$this->load->view('profile/card', $this->view_data,TRUE);
+        $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from, $start);
+        $this->view_data['search_result'] = $this->load->view('profile/card', $this->view_data, TRUE);
         //var_dump($this->db->last_query());
-        $array=array("amount"=>10,"result"=>$this->view_data['search_result']);
-        $state=true;
+        $array = array("amount" => 10, "result" => $this->view_data['search_result']);
+        $state = true;
         print_json($state, $array);
-        
-        
     }
 
     public function search() {
@@ -65,6 +64,7 @@ class Search extends My_Controller {
     }
 
     function base_profile() {
+        //note:optimization seo is requred
         $login_data = $this->session->userdata('loggedin');
         $email = $login_data["username"];
         if ($this->user_model->get_user($email) !== FALSE) {
@@ -74,6 +74,20 @@ class Search extends My_Controller {
             //redirect('/home');
             //var_dump($this->user_model->get_user($email));
             $this->load->view('profile', $this->view_data);
+        }
+    }
+
+    function get_shortlist($start) {
+        $uid = get_logged_user_id();
+        if ($uid !== FALSE) {
+            $this->view_data['user_profiles'] = $this->Search_model->search_shortlist($uid, $start);
+            $this->view_data['search_result'] = $this->load->view('profile/card', $this->view_data, TRUE);
+            $array = array("amount" => 10, "result" => $this->view_data['search_result']);
+            $state = true;
+
+            $array = array("amount" => 10, "result" => $this->view_data['search_result']);
+            $state = true;
+            print_json($state, $array);
         }
     }
 

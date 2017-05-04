@@ -1,3 +1,4 @@
+<link href="<?php echo base_url() ?>css/search.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>css/flag-icon.min.css" rel="stylesheet">
 <div class="container">
 

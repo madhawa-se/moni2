@@ -20,12 +20,10 @@
             </div>
             <div class="color-overlay">
 
-                <a href="<?php echo base_url() . "profile/user/" . $profile->id ?>" target="_blank">Full Profile</a>
-
                 <div class="icon-bar">
-                    <a class="active" href="#"><i class="fa fa-home"></i></a> 
-                    <a href="#"><i class="fa fa-envelope"></i></a> 
-                    <a href="#"><i class="fa fa fa-star"></i></a>
+                    <a class="active" href="<?php echo base_url() . "profile/user/" . $profile->id ?>" target="_blank"><i class="fa fa-external-link"></i></a> 
+                    <a href="#"><i class="fa fa-envelope"></i></a>
+                    <shortlist uid="<?php echo $profile->id ?>" listed="<?php //echo $profile->listed ?>"></shortlist>
                 </div>
 
             </div>

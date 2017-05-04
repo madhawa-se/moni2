@@ -89,5 +89,13 @@ class User extends My_Controller {
         $this->session->unset_userdata('loggedin');
         redirect("/home");
     }
+    
+    public function shortlist($target_id){
+        if(is_numeric($target_id)){
+            $state = $this->user_model->short_list($target_id);
+            print_json($state, "");
+            
+        }
+    }
 
 }
