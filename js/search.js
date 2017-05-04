@@ -61,4 +61,18 @@ app.controller('searchCTRL', function ($scope, $http, $filter) {
             alert(response.statusText);
         });
     };
+    $scope.loadShortlist = function () {
+        $scope.search.quick.start=0;
+        $(".pre-result").html("");
+        $http({
+            method: "POST",
+            url: baseurl + "search/get_shortlist/" + $scope.search.quick.start,
+        }).then(function mySucces(response) {
+            console.log(response.data);
+            $scope.quick_result += (response.data.data.result);
+            $scope.search.quick.start += response.data.data.amount;
+        }, function myError(response) {
+            alert(response.statusText);
+        });
+    };
 });

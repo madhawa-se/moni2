@@ -285,6 +285,7 @@
         .icon-bar {
             width: 90px;
             background-color: #555;
+            height: 100%;
         }
 
         .icon-bar a {
@@ -297,7 +298,7 @@
         }
 
         .icon-bar a:hover {
-            background-color: #000;
+            background-color: #f00f7e;
         }
 
         .icon-bar .active {
@@ -330,7 +331,7 @@
                 if (isset($active) && $active == "short_list") {
                     echo 'class="active"';
                 }
-                ?> ><a href="#tab_d" data-toggle="pill">Short List</a></li>
+                ?> ><a ng-click="loadShortlist()" data-toggle="pill">Short List</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -491,12 +492,13 @@
                     </div>
                 </div>
                 <div class="col-sm-12 result-pane">
-
-                    <?php
-                    if (isset($preset) && isset($search_result)) {
-                        echo $search_result;
-                    }
-                    ?>
+                    <div class="pre-result">
+                        <?php
+                        if (isset($preset) && isset($search_result)) {
+                            echo $search_result;
+                        }
+                        ?>
+                    </div>
                     <div ng-bind-html="quick_result"></div>
                 </div>
                 <div class="centered">
