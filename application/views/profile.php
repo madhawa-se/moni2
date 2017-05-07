@@ -41,6 +41,7 @@
         </script>
 
         <script src="<?php echo base_url() ?>js/app2.js"></script>
+        <script src="<?php echo base_url() ?>js/common.js"></script>
         <script src="<?php echo base_url() ?>js/filereader.js"></script>
         <script>
 <?php

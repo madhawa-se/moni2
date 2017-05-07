@@ -420,10 +420,29 @@ app.controller('formController', function ($scope, $http, $filter) {
         );
     };
 
+    $scope.profile_hide = function (formData) {
+        $http({
+            method: 'POST',
+            data: formData,
+            url: baseurl + "profile/update_profile",
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        }).then(function successCallback(response) {
+            $scope.handleError(response.data);
+        }, function errorCallback(response) {
+            alert("error");
+        }
+        );
+    };
+
 });
+
+
+
+
 
 app.controller('UploadController', function ($scope, fileReader) {
     $scope.imageSrc = "";
+    $scope.imagehorescope = "";
 
     $scope.$on("fileProgress", function (e, progress) {
         $scope.progress = progress.loaded / progress.total;
@@ -442,7 +461,7 @@ app.controller('mailCTRL', function ($scope, $http) {
     $scope.message.emails = [];
     $scope.message.content;
     $scope.message.to;
-    
+
     $scope.message.compose = function () {
         $http({
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -471,7 +490,7 @@ app.controller('mailCTRL', function ($scope, $http) {
             url: baseurl + "message/" + box.url,
 
         }).then(function successCallback(response) {
-            $scope.handleResponce(response.data,box);
+            $scope.handleResponce(response.data, box);
         }, function errorCallback(response) {
             alert("error");
         }
@@ -480,7 +499,7 @@ app.controller('mailCTRL', function ($scope, $http) {
 
     $scope.handleResponce = function (data, box) {
         if (data.state == true) {
-             $scope.message.emails = data.data;
+            $scope.message.emails = data.data;
         } else {
             alert("responce error");
         }
@@ -488,25 +507,3 @@ app.controller('mailCTRL', function ($scope, $http) {
     //$scope.loadMessages();
 });
 ////////////////////////////////////////////////////////////////////////////////
-app.directive("ngFileSelect", function (fileReader, $timeout) {
-    return {
-        scope: {
-            ngModel: '='
-        },
-        link: function ($scope, el) {
-            function getFile(file) {
-                fileReader.readAsDataUrl(file, $scope)
-                        .then(function (result) {
-                            $timeout(function () {
-                                $scope.ngModel = result;
-                            });
-                        });
-            }
-
-            el.bind("change", function (e) {
-                var file = (e.srcElement || e.target).files[0];
-                getFile(file);
-            });
-        }
-    };
-});

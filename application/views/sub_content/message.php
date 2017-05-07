@@ -509,7 +509,7 @@
                     <tbody>
                         <tr class="unread" ng-repeat="email in message.emails">
                             <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox">
+                                <input type="checkbox" class="mail-checkbox" ng-model="message.emails[email]">
                             </td>
                             <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
                             <td class="view-message dont-show"><p>{{email.msg}}</p></td>
