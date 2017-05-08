@@ -12,18 +12,43 @@ app.config(function ($routeProvider) {
             when('/horoscope', {templateUrl: baseurl + 'update/horoscope', controller: 'horoscopeCtrl'}).
             when('/hide', {templateUrl: baseurl + 'update/hide', controller: 'hideCtrl'}).
             otherwise({redirectTo: '/basic'});
-}).controller('basicCtrl', function ($scope) {
+});
+app.controller('basicCtrl', function ($scope) {
 
+    $scope.selectData = function () {
+        if (typeof jsonData !== 'undefined') {
+            $scope.name = jsonData.name;
+            $scope.gender = {id: jsonData.gender + ""};
+            $scope.religion_list = {id: jsonData.religion + ""};
+            $scope.lan_list = {id: jsonData.lan + ""};
+            $scope.email = jsonData.email;
+            $scope.country_list = {id: jsonData.country + ""};
+            // $scope.fnumber=jsonData.;
 
-}).controller('aboutmeCtrl', function ($scope) {
+        }
+    };
 
-}).controller('familyCtrl', function ($scope) {
+});
+app.controller('aboutmeCtrl', function ($scope) {
+    $scope.selectData2 = function () {
+        if (typeof user_aboutme_data !== 'undefined') {
+            $scope.weight = user_aboutme_data.weight;
+            $scope.height = user_aboutme_data.height;
+        }
+    };
+    $scope.selectData2();
 
-}).controller('photosCtrl', function ($scope) {
+});
+app.controller('familyCtrl', function ($scope) {
 
-}).controller('horoscopeCtrl', function ($scope) {
+});
+app.controller('photosCtrl', function ($scope) {
 
-}).controller('hideCtrl', function ($scope) {
+});
+app.controller('horoscopeCtrl', function ($scope) {
+
+});
+app.controller('hideCtrl', function ($scope) {
 
 });
 
@@ -46,7 +71,16 @@ app.controller('formController', function ($scope, $http, $filter) {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-
+    $scope.getList = function (list, url) {
+        $http({
+            method: "GET",
+            url: baseurl + url
+        }).then(function mySucces(response) {
+            $scope[list] = response.data;
+        }, function myError(response) {
+            alert(response.statusText);
+        });
+    };
 
     $scope.form = {
         name: {placeHolder: "type your name", requred: "true"},
@@ -340,57 +374,18 @@ app.controller('formController', function ($scope, $http, $filter) {
     };
 
     $scope.getCountryList = function () {
-        $http({
-            method: "GET",
-            url: baseurl + "Db_ajax/get_country_list"
-        }).then(function mySucces(response) {
-            $scope.countryList = response.data;
-        }, function myError(response) {
-            alert(response.statusText);
-        });
+        $scope.getList("countryList", "Db_ajax/get_country_list");
     };
     $scope.getReligionList = function () {
-        $http({
-            method: "GET",
-            url: baseurl + "Db_ajax/get_religion_list"
-        }).then(function mySucces(response) {
-            $scope.religionList = response.data;
-        }, function myError(response) {
-            alert(response.statusText);
-        });
+        $scope.getList("religionList", "Db_ajax/get_religion_list");
     };
     $scope.getLanList = function () {
-        $http({
-            method: "GET",
-            url: baseurl + "Db_ajax/get_lan_list"
-        }).then(function mySucces(response) {
-            $scope.lanList = response.data;
-        }, function myError(response) {
-            alert(response.statusText);
-        });
+        $scope.getList("lanList", "Db_ajax/get_lan_list");
     };
     $scope.getprofileForList = function () {
-        $http({
-            method: "GET",
-            url: baseurl + "Db_ajax/get_profile_for_list"
-        }).then(function mySucces(response) {
-            $scope.profileForList = response.data;
-        }, function myError(response) {
-            alert(response.statusText);
-        });
+        $scope.getList("profileForList", "Db_ajax/get_profile_for_list");
     };
-    $scope.selectData = function () {
-        if (typeof jsonData !== 'undefined') {
-            $scope.name = jsonData.name;
-            $scope.gender = {id: jsonData.gender + ""};
-            $scope.religion_list = {id: jsonData.religion + ""};
-            $scope.lan_list = {id: jsonData.lan + ""};
-            $scope.email = jsonData.email;
-            $scope.country_list = {id: jsonData.country + ""};
-            // $scope.fnumber=jsonData.;
 
-        }
-    };
 
     $scope.updateProfile = function (field_id) {
         submitted = true;
@@ -413,7 +408,7 @@ app.controller('formController', function ($scope, $http, $filter) {
     $scope.getReligionList();
     $scope.getLanList();
     $scope.getprofileForList();
-    $scope.selectData();
+    //$scope.selectData();
     //$scope.showdetails("colombo");
     $scope.submitForms = function (formData) {
         $http({

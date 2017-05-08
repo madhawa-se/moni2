@@ -201,10 +201,46 @@ class user_model extends CI_Model {
         return $json_data;
     }
 
+    function get_user_family_data($email) {
+        $user_data = $this->get_user($email); //check null
+
+        $this->db->from('user');
+        $this->db->join('weight', 'user.id = weight.user_id');
+        $this->db->join('height', 'user.id = height.user_id');
+        $this->db->where('user.id', $id);
+        $query = $this->db->get();
+
+        $row = false;
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+            var_dump($row);
+        }
+
+        $json_data = json_encode($row);
+        return $json_data;
+    }
+
+    function get_user_aboutme_data($id) {
+        $this->db->select('user.id,weight.value as weight,height.value as height');
+        $this->db->from('user');
+        $this->db->join('weight', 'user.id = weight.user_id');
+        $this->db->join('height', 'user.id = height.user_id');
+        $this->db->where('user.id', $id);
+        $query = $this->db->get();
+
+        $row = false;
+        if ($query->num_rows() > 0) {
+            $row = $query->row();
+        }
+
+        $json_data = json_encode($row);
+        return $json_data;
+    }
+
     function short_list($target_id) {
         //note : already listed should be validated
         $uid = get_logged_user_id();
-        $data=array("user_id"=>$uid,"listed_user_id"=>$target_id);
+        $data = array("user_id" => $uid, "listed_user_id" => $target_id);
         $state = $this->db->insert('shortlist', $data);
         return $state;
     }

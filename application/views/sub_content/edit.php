@@ -26,6 +26,7 @@
                 <ul class="nav nav-pills nav-stacked">
                     <li class="active"><a  data-toggle="pill" href="#/basic">Basic Info</a></li>
                     <!--<li><a data-toggle="pill" href="#/aboutme">About Me</a></li>-->
+                    <li><a  href="#/aboutme">About Me</a></li>
                     <li><a  href="#/home">Life Style</a></li>
                     <li><a  href="#/family">Family</a></li>
                     <li><a  href="#">My Partner</a></li>

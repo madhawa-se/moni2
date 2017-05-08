@@ -1,4 +1,7 @@
-<div id="aboutme" class="tab-pane fade" ng-controller="formController">
+<div id="aboutme" class="tab-pane">
+    <div>
+        <?php print_script("var user_aboutme_data=$aboutme_data") ?>
+    </div>
     <form id="aboutme" name="aboutme">
         <h4>About me</h4>
         <div class="form-group">
@@ -17,10 +20,10 @@
             <label class="col-md-3 control-label" for="notifymode">Weight</label>
             <div class="col-md-9">
                 <div class="input-group">
-                    <input  type="text" class="form-control" ng-model="formModels.weight.value" name="weight" placeholder="weight">
+                    <input  type="text" class="form-control" ng-model="weight" name="weight" placeholder="weight">
                     <span class="input-group-addon">Kg</span>
                 </div>
-                <p ng-show="formModels.weight.error.state" class="help-danger help ng-hide">{{formModels.weight.error.msg}}</p>
+<!--                <p ng-show="formModels.weight.error.state" class="help-danger help ng-hide">{{formModels.weight.error.msg}}</p>-->
             </div>
 
         </div>
@@ -28,10 +31,10 @@
             <label class="col-md-3 control-label" for="notifymode">Height</label>
             <div class="col-md-9">
                 <div class="input-group">
-                    <input  type="email" class="form-control" ng-model="formModels.height.value"  name="height" placeholder="Height">
+                    <input  type="email" class="form-control" ng-model="height"  name="height" placeholder="Height">
                     <span class="input-group-addon">cm</span>
                 </div>
-                <p ng-show="(aboutme.height.$invalid && (aboutme.height.$touched))" class="help-danger help ng-hide">hmm</p>
+<!--                <p ng-show="(aboutme.height.$invalid && (aboutme.height.$touched))" class="help-danger help ng-hide">hmm</p>-->
             </div>
 
         </div>
