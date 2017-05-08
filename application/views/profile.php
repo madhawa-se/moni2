@@ -105,22 +105,11 @@ if (isset($jsondata)) {
 
     <body>
         <div id="header">
-            <h1 id="logo"><a href="#/home"></a></h1>
-
-            <div id="menu">
-                <a href="#/home" class="btn">Home</a>
-                <a href="#/about" class="btn">About</a>
-                <a href="#/experiments" class="btn">Experiments</a>
-            </div>
             <div class="color"></div>
             <div class="clear"></div>
         </div>
         <!-- //top -->
         <div class="shadow"></div>
-
-        <div id="container">
-            <div ng-view></div>
-        </div>
 
         <!--header starat-->
 

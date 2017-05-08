@@ -5,16 +5,25 @@ var app = angular.module('myapp', ['ngRoute']);
 
 app.config(function ($routeProvider) {
     $routeProvider.
-            when('/about', {templateUrl: 'partials/about.html', controller: 'AboutCtrl'}).
-            when('/experiments', {templateUrl: 'partials/experiments.html', controller: 'ExperimentsCtrl'}).
-            when('/home', {templateUrl: 'partials/home.html', controller: 'HomeCtrl'}).
-            otherwise({redirectTo: '/home'});
-}).controller('AboutCtrl', function ($scope) {
+            when('/basic', {templateUrl: baseurl + 'update/basic', controller: 'basicCtrl'}).
+            when('/aboutme', {templateUrl: baseurl + 'update/aboutme', controller: 'aboutmeCtrl'}).
+            when('/family', {templateUrl: baseurl + 'update/family', controller: 'familyCtrl'}).
+            when('/photos', {templateUrl: baseurl + 'update/photos', controller: 'photosCtrl'}).
+            when('/horoscope', {templateUrl: baseurl + 'update/horoscope', controller: 'horoscopeCtrl'}).
+            when('/hide', {templateUrl: baseurl + 'update/hide', controller: 'hideCtrl'}).
+            otherwise({redirectTo: '/basic'});
+}).controller('basicCtrl', function ($scope) {
 
 
-}).controller('ExperimentsCtrl', function ($scope) {
+}).controller('aboutmeCtrl', function ($scope) {
 
-}).controller('HomeCtrl', function ($scope) {
+}).controller('familyCtrl', function ($scope) {
+
+}).controller('photosCtrl', function ($scope) {
+
+}).controller('horoscopeCtrl', function ($scope) {
+
+}).controller('hideCtrl', function ($scope) {
 
 });
 
