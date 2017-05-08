@@ -1,3 +1,4 @@
+ <script src="<?php echo base_url() ?>js/message.js"></script>
 <div class="container">
     <style>
         .unread{
@@ -515,9 +516,9 @@
                             <td class="view-message dont-show"><p>{{email.msg}}</p></td>
                             <td class="view-message">Request from madhawa</td>
                             <td class="view-message inbox-small-cells"></td>
-                            <td class="view-message text-right">{{email.date | date :  "MMM d"}}</td>
+                            <td class="view-message text-right">{{email.date| date :  "MMM d"}}</td>
                         </tr>
-                      
+
 
                     </tbody>
                 </table>

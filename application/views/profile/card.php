@@ -22,8 +22,8 @@
 
                 <div class="icon-bar">
                     <a class="active" href="<?php echo base_url() . "profile/user/" . $profile->id ?>" target="_blank"><i class="fa fa-external-link"></i></a> 
-                    <a href="#"><i class="fa fa-envelope"></i></a>
-                    <shortlist uid="<?php echo $profile->id ?>" listed="<?php //echo $profile->listed ?>"></shortlist>
+                    <button ng-click="showMsgModel(<?php echo $profile->id ?>)" ng-model="msg_btn" ><i class="fa fa-envelope"></i></button>
+                    <shortlist uid="<?php echo $profile->id ?>" listed="<?php //echo $profile->listed  ?>"></shortlist>
                 </div>
 
             </div>

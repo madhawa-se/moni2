@@ -1,6 +1,6 @@
 var app = angular.module('myapp', ['ngRoute', 'ngSanitize']);
 
-app.directive('shortlist', function ($http,$compile) {
+app.directive('shortlist', function ($http, $compile) {
 
     var addToList = function (target_id, callback) {
         $http({
@@ -23,7 +23,7 @@ app.directive('shortlist', function ($http,$compile) {
             //var template='<a href="#"><span><i class="fa fa fa-star"></i><span></a>';
             //var content = $compile(template)(scope);
             //element.append(content);
-            
+
             element.bind('click', function () {
                 element.addClass("spin");
                 addToList(attr.uid, callback);
@@ -37,6 +37,19 @@ app.directive('shortlist', function ($http,$compile) {
         }
     };
 });
+
+app.controller('formViewCtrl', function ($scope, $http) {
+    $scope.formView;
+    $scope.loadForm = function (view) {
+        $("#pre_formview").empty();
+        $scope.formView = baseurl + "Search/get_form/" + view;
+    };
+    $scope.templateUrl = function () {
+        return $scope.formView;
+    }
+
+});
+
 app.controller('searchCTRL', function ($scope, $http, $filter) {
     $scope.search = {};
     $scope.quick_result = "";
@@ -62,7 +75,7 @@ app.controller('searchCTRL', function ($scope, $http, $filter) {
         });
     };
     $scope.loadShortlist = function () {
-        $scope.search.quick.start=0;
+        $scope.search.quick.start = 0;
         $(".pre-result").html("");
         $http({
             method: "POST",

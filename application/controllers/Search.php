@@ -39,6 +39,7 @@ class Search extends My_Controller {
         $this->view_data["active"] = "quick_search";
         $this->view_data['user_profiles'] = $this->Search_model->search_quick($post_data, $to, $from);
         $this->view_data['search_result'] = $this->load->view('profile/card', $this->view_data, TRUE);
+        $this->view_data['search_form'] = $this->load->view('search_forms/quick', '', TRUE);
         $this->search();
     }
 
@@ -89,6 +90,10 @@ class Search extends My_Controller {
             $state = true;
             print_json($state, $array);
         }
+    }
+    
+    function get_form($form){
+       $this->load->view("search_forms/$form");
     }
 
 }

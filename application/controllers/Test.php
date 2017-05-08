@@ -16,7 +16,7 @@ class Test extends My_Controller {
     }
 
     function index() {
-        echo $this->config->item('domain');
+        $this->load->view("search_forms/advanced");
     }
 
 }

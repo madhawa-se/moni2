@@ -247,13 +247,7 @@
             margin-bottom: 17px;
         }
 
-        .btn{ 
-            border-radius: 50%; 
-            width:32px; 
-            height:32px;
-            line-height:18px; 
-            display: inline-block;
-        }
+       
 
         .color-overlay {
             position: absolute;
@@ -288,13 +282,17 @@
             height: 100%;
         }
 
-        .icon-bar a {
+        .icon-bar a ,.icon-bar button{
             display: block;
             text-align: center;
             padding: 16px;
             transition: all 0.3s ease;
             color: white;
             font-size: 36px;
+            width: 100%;
+            background-color: #ffdead00;
+            outline: none;
+
         }
 
         .icon-bar a:hover {
@@ -304,29 +302,45 @@
         .icon-bar .active {
             background-color: #4CAF50 !important;
         }
+        .pill-btn{
+            display: block;
+            width: 100%;
+            padding: 10px 15px;
+            border-radius: 4px;
+            background-color: rgba(233, 30, 99, 0.73);
+            color: white;
+            text-align: left;
+            border: 1px solid rgba(233, 30, 99, 0);
+
+        }
+        .pill-btn:hover{
+            background-color: rgba(128, 90, 195, 0.67) !important;
+        }
     </style>
 
 
     <script src="<?php echo base_url() ?>js/search.js"></script>
+    <script src="<?php echo base_url() ?>js/message.js"></script>
 
-    <div class="row" ng-controller="searchCTRL">
+
+    <div class="row" ng-controller="formViewCtrl">
         <div class="col-md-3">
             <ul class="nav nav-pills nav-stacked">
                 <li <?php
                 if (isset($active) && $active == "search") {
                     echo 'class="active"';
                 }
-                ?> ><a href="#tab_a" data-toggle="pill">Search</a></li>
+                ?> ><button ng-click="loadForm('')"  class="pill-btn">Search</button></li>
                 <li <?php
                 if (isset($active) && $active == "advance_search") {
                     echo 'class="active"';
                 }
-                ?> ><a href="#tab_b" data-toggle="pill">Advanced Search</a></li>
+                ?> ><button ng-click="loadForm('advanced')" class="pill-btn">Advanced Search</button></li>
                 <li <?php
                 if (isset($active) && $active == "quick_search") {
                     echo 'class="active"';
                 }
-                ?> ><a href="#tab_c" data-toggle="pill">Quick Search</a></li>
+                ?> ><button ng-click="loadForm('quick')" class="pill-btn">Quick Search</button></li>
                 <li <?php
                 if (isset($active) && $active == "short_list") {
                     echo 'class="active"';
@@ -336,187 +350,86 @@
         </div>
         <div class="col-md-9">
             <div class="row">
-                <div class="col-sm-12"> 
-                    <div class="col-sm-12">
-                        <div class="container">
-                            <form id="quick-search" class="form-inline ng-pristine ng-valid" role="form" method="post" action="http://localhost/newleaf/Search/quick_search_submit">
-                                <div class="form-group">
-                                    <label for="name">Looking For</label><br>
-                                    <div class="radio radio-info radio-inline">
-                                        <input size="12" id="inlineRadio1" value="1" name="gender" checked="" type="radio">
-                                        <label for="inlineRadio1"> Groom </label>
-                                    </div>
-                                    <div class="radio radio-inline">
-                                        <input id="inlineRadio2" value="2" name="gender" type="radio">
-                                        <label for="inlineRadio2"> Bride </label>
-                                    </div>
-                                </div>&nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <div class="form-group">
-                                    <label for="name">Age</label><br>
-                                    <select name="from" class="form-control">
-                                        <option value="18">18</option>
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                        <option value="32">32</option>
-                                        <option value="33">33</option>
-                                        <option value="34">34</option>
-                                        <option value="35">35</option>
-                                        <option value="36">36</option>
-                                        <option value="37">37</option>
-                                        <option value="38">38</option>
-                                        <option value="39">39</option>
-                                        <option value="40">40</option>
-                                        <option value="41">41</option>
-                                        <option value="42">42</option>
-                                        <option value="43">43</option>
-                                        <option value="44">44</option>
-                                        <option value="45">45</option>
-                                        <option value="46">46</option>
-                                        <option value="47">47</option>
-                                        <option value="48">48</option>
-                                        <option value="49">49</option>
-                                    </select>
+                <div class="col-sm-12" ng-controller="formViewCtrl">
 
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="name"></label><br>to
-
-                                    <select name="to" class="form-control" width="100px">
-                                        <option value="19">19</option>
-                                        <option value="20">20</option>
-                                        <option value="21">21</option>
-                                        <option value="22">22</option>
-                                        <option value="23">23</option>
-                                        <option value="24">24</option>
-                                        <option value="25">25</option>
-                                        <option value="26">26</option>
-                                        <option value="27">27</option>
-                                        <option value="28">28</option>
-                                        <option value="29">29</option>
-                                        <option value="30">30</option>
-                                        <option value="31">31</option>
-                                        <option value="32">32</option>
-                                        <option value="33">33</option>
-                                        <option value="34">34</option>
-                                        <option value="35">35</option>
-                                        <option value="36">36</option>
-                                        <option value="37">37</option>
-                                        <option value="38">38</option>
-                                        <option value="39">39</option>
-                                        <option value="40">40</option>
-                                        <option value="41">41</option>
-                                        <option value="42">42</option>
-                                        <option value="43">43</option>
-                                        <option value="44">44</option>
-                                        <option value="45">45</option>
-                                        <option value="46">46</option>
-                                        <option value="47">47</option>
-                                        <option value="48">48</option>
-                                        <option value="49">49</option>
-                                        <option value="50">50</option>
-                                    </select>  &nbsp;&nbsp;&nbsp;&nbsp;
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    <label for="name">Religion</label><br>
-                                    <select id="religion" name="religion" class="form-control">
-                                        <option value="">  &nbsp; &nbsp;&nbsp;&nbsp; --Select-- &nbsp; &nbsp;&nbsp;&nbsp; </option>
-                                        <option value="1">Buddhisum</option>
-                                        <option value="2">Cristian</option>
-                                        <option value="3">Muslim</option>
-                                        <option value="4">Hindu</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-
-                                    <label for="email">Mother Tongue</label><br>
-                                    <select id="mothertongue" name="mothertongue" class="form-control">
-                                        <option value="">  &nbsp; &nbsp;&nbsp;&nbsp; --Select-- &nbsp; &nbsp;&nbsp;&nbsp; </option>
-                                        <option value="1">Sinhala</option>
-                                        <option value="2">Tamil</option>
-                                        <option value="1">English</option>
-                                        <option value="2">Others</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-
-                                    <label for="pwd">Country Living In</label><br>
-                                    <select id="livein" name="livein" class="form-control">
-                                        <option value="">  &nbsp; &nbsp;&nbsp;&nbsp; --Select-- &nbsp; &nbsp;&nbsp;&nbsp; </option>
-                                        <option value="1">Srilanka</option>
-                                        <option value="2">India</option>
-                                        <option value="3">Colombo</option>
-                                        <option value="4">Jaffna</option>
-                                    </select>
-                                </div>
-                                &nbsp;&nbsp;&nbsp;
-
-
-                                <style>
-                                    .button4 {
-                                        color: #FFF;
-                                        background-color: #7140bc;
-                                        width:100px;
-                                        height:40px;
-
-                                    }
-
-                                    .button4:hover {
-                                        background-color: #dd3175;
-                                        color: white;
-                                    }
-
-                                </style>
-
-
-                                <br>
-                                <button type="submit" class="button4">Search</button>
-                            </form>
+                    <div class="">
+                        <button  class="btn btn-info" type="button" data-toggle="collapse" data-target="#search_panel"><span class="glyphicon glyphicon-search"></span> Search</button>
+                    </div>
+                    <div id="search_panel">
+                        <div id="pre_formview">
+                            <?php
+                            if (isset($search_form)) {
+                                echo $search_form;
+                            }
+                            ?>
                         </div>
+                        <ng-include class="anim-fade" id="post_formview" src="templateUrl()"></ng-include>
                     </div>
                 </div>
-                <div class="col-sm-12 result-pane">
-                    <div class="pre-result">
-                        <?php
-                        if (isset($preset) && isset($search_result)) {
-                            echo $search_result;
-                        }
-                        ?>
-                    </div>
-                    <div ng-bind-html="quick_result"></div>
-                </div>
-                <div class="centered">
-                    <p>10 of 20</p>
-                    <button ng-model="sds" class="button-x button3" ng-click="loadQuick()">Load More</button>
-                </div>
-
 
             </div>
+            <div class="col-sm-12 result-pane" ng-controller="mailCTRL">
+                <!-- Modal -->
+                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                <h4 class="modal-title">Compose</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">To</label>
+                                        <div class="col-lg-10">
+                                            <input type="text" placeholder="" id="inputEmail1" class="form-control" ng-model="message.to">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-lg-2 control-label">Message</label>
+                                        <div class="col-lg-10">
+                                            <textarea rows="10" cols="30" class="form-control" id="" name="" ng-model="message.content"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                            <span class="btn green fileinput-button">
+                                                <i class="fa fa-plus fa fa-white"></i>
+                                                <span>Attachment</span>
+                                                <input type="file" name="files[]" multiple="">
+                                            </span>
+                                            <button class="btn btn-send" type="button" ng-model="compose_btn" ng-click="message.compose()">Send</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div>
+                <!-- /.modal -->
+                <div class="pre-result">
+                    <?php
+                    if (isset($preset) && isset($search_result)) {
+                        echo $search_result;
+                    }
+                    ?>
+                </div>
+                <div ng-bind-html="quick_result"></div>
+            </div>
+            <div class="centered">
+                <p>10 of 20</p>
+                <button ng-model="sds" class="button-x button3" ng-click="loadQuick()">Load More</button>
+            </div>
+
 
         </div>
 
     </div>
 
-
-</div>
 </div>
 
 
+</div>
 
-</style>
