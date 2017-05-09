@@ -247,7 +247,7 @@
             margin-bottom: 17px;
         }
 
-       
+
 
         .color-overlay {
             position: absolute;
@@ -348,15 +348,15 @@
                 ?> ><a ng-click="loadShortlist()" data-toggle="pill">Short List</a></li>
             </ul>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-9"  ng-controller="searchCTRL">
             <div class="row">
 
-                <div class="col-sm-12" ng-controller="formViewCtrl">
+                <div class="col-sm-12">
 
                     <div class="">
-                        <button  class="btn btn-info" type="button" data-toggle="collapse" data-target="#search_panel"><span class="glyphicon glyphicon-search"></span> Search</button>
+                        <button  class="round-button" type="button" data-toggle="collapse" data-target="#search_panel"><span class="glyphicon glyphicon-search"></span> Search</button>
                     </div>
-                    <div id="search_panel">
+                    <div id="search_panel" class="search_panel collapse in">
                         <div id="pre_formview">
                             <?php
                             if (isset($search_form)) {
@@ -369,66 +369,68 @@
                 </div>
 
             </div>
-            <div class="col-sm-12 result-pane" ng-controller="mailCTRL">
-                <!-- Modal -->
-                <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                                <h4 class="modal-title">Compose</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form role="form" class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label">To</label>
-                                        <div class="col-lg-10">
-                                            <input type="text" placeholder="" id="inputEmail1" class="form-control" ng-model="message.to">
+            <div class="col-sm-12 result-pane">
+                <div ng-controller="mailCTRL">
+                    <!-- Modal -->
+                    <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                    <h4 class="modal-title">Compose</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">To</label>
+                                            <div class="col-lg-10">
+                                                <input type="text" placeholder="" id="inputEmail1" class="form-control" ng-model="message.to">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-lg-2 control-label">Message</label>
-                                        <div class="col-lg-10">
-                                            <textarea rows="10" cols="30" class="form-control" id="" name="" ng-model="message.content"></textarea>
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Message</label>
+                                            <div class="col-lg-10">
+                                                <textarea rows="10" cols="30" class="form-control" id="" name="" ng-model="message.content"></textarea>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <div class="col-lg-offset-2 col-lg-10">
-                                            <span class="btn green fileinput-button">
-                                                <i class="fa fa-plus fa fa-white"></i>
-                                                <span>Attachment</span>
-                                                <input type="file" name="files[]" multiple="">
-                                            </span>
-                                            <button class="btn btn-send" type="button" ng-model="compose_btn" ng-click="message.compose()">Send</button>
+                                        <div class="form-group">
+                                            <div class="col-lg-offset-2 col-lg-10">
+                                                <span class="btn green fileinput-button">
+                                                    <i class="fa fa-plus fa fa-white"></i>
+                                                    <span>Attachment</span>
+                                                    <input type="file" name="files[]" multiple="">
+                                                </span>
+                                                <button class="btn btn-send" type="button" ng-model="compose_btn" ng-click="message.compose()">Send</button>
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div><!-- /.modal-content -->
-                    </div><!-- /.modal-dialog -->
+                                    </form>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
+                    <div>
+                        <div class="pre-result">
+                            <?php
+                            if (isset($preset) && isset($search_result)) {
+                                echo $search_result;
+                            }
+                            ?>
+                        </div>
+                        <div bind-html-compile="searchResultx"></div>
+                    </div>
+                    <div class="centered">
+                        <p>10 of 20</p>
+                        <button ng-model="sds" class="button-x button3" ng-click="loadQuick()">Load More</button>
+                    </div>
                 </div>
-                <!-- /.modal -->
-                <div class="pre-result">
-                    <?php
-                    if (isset($preset) && isset($search_result)) {
-                        echo $search_result;
-                    }
-                    ?>
-                </div>
-                <div ng-bind-html="quick_result"></div>
-            </div>
-            <div class="centered">
-                <p>10 of 20</p>
-                <button ng-model="sds" class="button-x button3" ng-click="loadQuick()">Load More</button>
-            </div>
 
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 
 </div>

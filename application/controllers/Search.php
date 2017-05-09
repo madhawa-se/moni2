@@ -54,6 +54,18 @@ class Search extends My_Controller {
         $state = true;
         print_json($state, $array);
     }
+    public function advance_search($start) {
+        //$post_data = array_filter($this->input->post(array("heightfrom", "heightto"), TRUE));
+        $height_to = $this->input->post("heightto");
+        $height_from = $this->input->post("heightfrom");
+        $this->view_data['user_profiles'] = $this->Search_model->search_advance($height_to, $height_from, $start);
+        $this->view_data['search_result'] = $this->load->view('profile/card', $this->view_data, TRUE);
+        //var_dump($this->db->last_query());
+        $array = array("amount" => 10, "result" => $this->view_data['search_result']);
+        $state = true;
+        //var_dump($array);
+        print_json($state, $array);
+    }
 
     public function search() {
         $login_data = $this->session->userdata('loggedin');

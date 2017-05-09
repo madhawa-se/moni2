@@ -16,7 +16,7 @@ class Test extends My_Controller {
     }
 
     function index() {
-        $this->load->view("search_forms/advanced");
+        $this->load->view("pricing");
     }
 
 }

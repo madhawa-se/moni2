@@ -1,4 +1,4 @@
-var app = angular.module('myapp', ['ngRoute', 'ngSanitize']);
+var app = angular.module('myapp', ['ngRoute', 'ngSanitize','angular-bind-html-compile']);
 
 app.directive('shortlist', function ($http, $compile) {
 
@@ -43,6 +43,7 @@ app.controller('formViewCtrl', function ($scope, $http) {
     $scope.loadForm = function (view) {
         $("#pre_formview").empty();
         $scope.formView = baseurl + "Search/get_form/" + view;
+        $("#search_panel").collapse("show");
     };
     $scope.templateUrl = function () {
         return $scope.formView;
@@ -52,8 +53,9 @@ app.controller('formViewCtrl', function ($scope, $http) {
 
 app.controller('searchCTRL', function ($scope, $http, $filter) {
     $scope.search = {};
-    $scope.quick_result = "";
     $scope.search.quick = {start: 0, end: 0, more: true, };
+    $scope.search.advance = {start: 0, end: 0, more: true, };
+    $scope.search.shortlist = {start: 0, end: 0, more: true, };
 
 
     $scope.loadQuick = function () {
@@ -68,13 +70,14 @@ app.controller('searchCTRL', function ($scope, $http, $filter) {
             data: formData,
         }).then(function mySucces(response) {
             console.log(response.data);
-            $scope.quick_result += (response.data.data.result);
+            $scope.searchResult += (response.data.data.result);
             $scope.search.quick.start += response.data.data.amount;
         }, function myError(response) {
             alert(response.statusText);
         });
     };
     $scope.loadShortlist = function () {
+
         $scope.search.quick.start = 0;
         $(".pre-result").html("");
         $http({
@@ -83,6 +86,32 @@ app.controller('searchCTRL', function ($scope, $http, $filter) {
         }).then(function mySucces(response) {
             console.log(response.data);
             $scope.quick_result += (response.data.data.result);
+            $scope.search.quick.start += response.data.data.amount;
+        }, function myError(response) {
+            alert(response.statusText);
+        });
+    };
+
+    $scope.fetchSearch = function () {
+        $scope.searchResultx = "functioning...";
+        $(".pre-result").html("");
+        $("#search_panel").collapse("hide");
+        //console.log( $(".search_panel").collapse("toggle"));
+        var formData = $("#advance-search :input").filter(function (index, element) {
+            return $(element).val() != "";
+        }).serialize();
+
+        $http({
+            method: "POST",
+            url: baseurl + "Search/advance_search/" + 0,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: formData
+        }).then(function mySucces(response) {
+            console.log(response.data);
+
+            $scope.searchResultx = response.data.data.result;
+
+
             $scope.search.quick.start += response.data.data.amount;
         }, function myError(response) {
             alert(response.statusText);

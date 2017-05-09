@@ -116,7 +116,7 @@
     <div class="form-group">
 
         <label for="pwd">Country Living In</label><br>
-        <select id="livein" name="livein" class="form-control">
+        <select id="country" name="country" class="form-control">
             <option value="">  &nbsp; &nbsp;&nbsp;&nbsp; --Select-- &nbsp; &nbsp;&nbsp;&nbsp; </option>
             <option value="1">Srilanka</option>
             <option value="2">India</option>

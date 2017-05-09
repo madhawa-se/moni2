@@ -1,4 +1,4 @@
-<form ng-cloak ng-validate="true" action="http://localhost/newleaf/home/register" novalidate="true"  class="form-horizontal" method="post" name="regform" ng-controller="formController" ng-submit="submitForm($event, regform.$valid)">
+<form id="advance-search" novalidate="true"  class="form-horizontal" method="post">
 
 
     <div class="form-group">
@@ -6,17 +6,14 @@
 
 
         <div class="col-md-2">
-            <select id="religion" name="religion"  ng-model="religion_list" class="form-control">
-                <option value="">--Select--</option>
-            </select>
+            <input class="form-control" type="text" name="heightfrom"/>
         </div>
         <div class="col-md-1">
-            <label class="control-label" for="">To</label>
+            <label class="control-label">to</label>
         </div>
         <div class="col-md-2">
-            <select id="religion" name="religion"  ng-model="religion_list" class="form-control">
-                <option value="">--Select--</option>
-            </select>
+            <input class="form-control" type="text" name="heightto"/>
+
         </div>
 
 
@@ -119,6 +116,21 @@
         </div>
 
     </div>
+    <br>
+    <button type="button" class="button4" ng-click="fetchSearch()">Search</button>
+  <style>
+        .button4 {
+            color: #FFF;
+            background-color: #7140bc;
+            width:100px;
+            height:40px;
 
+        }
 
+        .button4:hover {
+            background-color: #dd3175;
+            color: white;
+        }
+
+    </style>
 </form>

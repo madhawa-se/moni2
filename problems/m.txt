@@ -1,0 +1,12 @@
+extending controller
+
+<div>
+mail base functionalities ,search base functionalities
+</div>
+
+solution:extending?
+or nesting
+?
+
+
+applying ng controller large div or individual small divs ?

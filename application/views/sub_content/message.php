@@ -508,9 +508,9 @@
                 </div>
                 <table class="table table-inbox table-hover">
                     <tbody>
-                        <tr class="unread" ng-repeat="email in message.emails">
+                        <tr class="unread" ng-repeat="email in message.emails track by $index">
                             <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox" ng-model="message.emails[email]">
+                                <input type="checkbox" class="mail-checkbox" ng-model="$index">
                             </td>
                             <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
                             <td class="view-message dont-show"><p>{{email.msg}}</p></td>
