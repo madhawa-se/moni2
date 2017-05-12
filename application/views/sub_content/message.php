@@ -1,4 +1,4 @@
- <script src="<?php echo base_url() ?>js/message.js"></script>
+<script src="<?php echo base_url() ?>js/message.js"></script>
 <div class="container">
     <style>
         .unread{
@@ -470,6 +470,9 @@
                         <a data-original-title="Refresh" data-placement="top" data-toggle="dropdown" href="#" class="btn mini tooltips">
                             <i class=" fa fa-refresh"></i>
                         </a>
+                        <a data-original-title="Refresh" class="btn mini tooltips" ng-click="deleteMsg()">
+                            <i class=" fa fa-trash-o"></i>
+                        </a>
                     </div>
                     <div class="btn-group hidden-phone">
                         <a data-toggle="dropdown" href="#" class="btn mini blue" aria-expanded="false">
@@ -510,7 +513,7 @@
                     <tbody>
                         <tr class="unread" ng-repeat="email in message.emails track by $index">
                             <td class="inbox-small-cells">
-                                <input type="checkbox" class="mail-checkbox" ng-model="$index">
+                                <input type="checkbox" class="mail-checkbox" ng-model="email.state">
                             </td>
                             <td class="inbox-small-cells"><i class="fa fa-star"></i></td>
                             <td class="view-message dont-show"><p>{{email.msg}}</p></td>
@@ -523,6 +526,28 @@
                     </tbody>
                 </table>
             </div>
+
         </aside>
     </div>
+    <div class="container">
+
+        <!-- Modal -->
+        <div class="modal fade" id="confirm-model" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>This is a small modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -24,6 +24,15 @@ app.controller('mailCTRL', function ($scope, $http) {
         }
         );
     };
+    $scope.deleteMsg = function () {
+        var deletes = $.grep($scope.message.emails, function (email) {
+            return email.state === true;
+        });
+        if (deletes.length>0){
+            $("#confirm-model").modal("show");
+        }
+
+    }
 
     $scope.loadMessages = function (box) {
         $scope.ajxLoad($scope.message.boxes[box]);
