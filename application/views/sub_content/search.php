@@ -1,5 +1,6 @@
 <link href="<?php echo base_url() ?>css/search.css" rel="stylesheet">
 <link href="<?php echo base_url() ?>css/flag-icon.min.css" rel="stylesheet">
+<link href="<?php echo base_url() ?>css/rzslider.min.css" rel="stylesheet">
 <div class="container">
 
     <style>
@@ -321,6 +322,7 @@
 
     <script src="<?php echo base_url() ?>js/search.js"></script>
     <script src="<?php echo base_url() ?>js/message.js"></script>
+    <script src="<?php echo base_url() ?>js/rzslider.min.js"></script>
 
 
     <div class="row" ng-controller="formViewCtrl">

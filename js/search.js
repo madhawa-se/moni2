@@ -1,4 +1,4 @@
-var app = angular.module('myapp', ['ngRoute', 'ngSanitize','angular-bind-html-compile']);
+var app = angular.module('myapp', ['ngRoute', 'ngSanitize','angular-bind-html-compile','rzModule']);
 
 app.directive('shortlist', function ($http, $compile) {
 
@@ -52,6 +52,7 @@ app.controller('formViewCtrl', function ($scope, $http) {
 });
 
 app.controller('searchCTRL', function ($scope, $http, $filter) {
+    $scope.priceSlider = 150;
     $scope.search = {};
     $scope.search.quick = {start: 0, end: 0, more: true, };
     $scope.search.advance = {start: 0, end: 0, more: true, };
