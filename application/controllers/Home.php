@@ -49,6 +49,7 @@ class Home extends My_Controller {
             $this->form_validation->set_rules('religion', 'religion', 'required');
             $this->form_validation->set_rules('terms', 'terms', 'required');
             $this->form_validation->set_rules('livein', 'livein', 'required');
+            $this->form_validation->set_rules('fnumber', 'Phone Number', 'required|max_length[12]');
 
 
             if ($this->form_validation->run()) {
@@ -58,6 +59,7 @@ class Home extends My_Controller {
                 $this->load_home();
             }
         } else if ($this->input->post('login')) {
+            $this->form_validation->set_error_delimiters('<p class="help">', '</p>');
             $this->form_validation->set_rules('user', 'user name', 'required');
             $this->form_validation->set_rules('pass', 'password', 'required');
 
@@ -66,11 +68,13 @@ class Home extends My_Controller {
                 $this->login_submit();
             } else {
                 $this->view_data['login_errors'] = validation_errors();
+                $this->genarate_header();//note: shoud change machanism - header is calling twice to make error appear 
             }
             $this->load_home();
         } else {
             $this->load_home();
         }
+        
     }
 
     private function load_home() {
@@ -218,7 +222,7 @@ Regards ,
 
         $from_email = $this->config->item('domain');
         $company_name = $this->config->item('company_name');
-        ;
+        
         $site = base_url();
 
         $data["company_name"] = $company_name;

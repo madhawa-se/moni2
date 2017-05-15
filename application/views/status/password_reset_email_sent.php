@@ -50,10 +50,9 @@
                         <span class="glyicon glyphicon glyphicon-ok"></span>
                     </div>
                     <h3>Dear, <?php echo $name ?></h3>
-                    <p style="font-size:18px;color:#5C5C5C;">Thank you for Joining with <?php echo $company_name ?>.We have sent you an email with verification link.
-                        Please go to your email now and Verify your account.</p>
+                    <p style="font-size:18px;color:#5C5C5C;">Password reset link is sent to your Email.,<br>please proceed and follow steps.</p>
                     <p>
-                        regards,<br>
+                        Regards,<br>
                         <?php echo $domain ?>
                     </p>
                     

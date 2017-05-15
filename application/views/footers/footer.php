@@ -1,18 +1,24 @@
 <style>
     .well9 {
-
-
         margin-bottom: 0px;
         background-color: #fff;
         color: #000;
-
     }
     footer,.footer{
         text-align: center;
+        /*
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        */
+        background-color: white;
     }
 
 </style>
 <div class="well9">
+    <!--
     <div class="container">
         <br>
         <a href="">About Us</a> | <a href="">Contact Us</a>
@@ -22,7 +28,7 @@
 
 
     </div>
-
+    -->
 
     <!--footer-->
 

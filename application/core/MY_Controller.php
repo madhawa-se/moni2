@@ -25,12 +25,13 @@ class My_Controller extends CI_Controller {
             $pic = get_profile_pic(get_logged_user_id());
             $this->view_data["pic"] = $pic;
 
-            //echo ("hello $uname ! welcome back");
+
             $template_header = $this->load->view("headers/header_log", '', TRUE);
         } else {
-            $template_header = $this->load->view("headers/header_def", '', TRUE);
+            $template_header = $this->load->view("headers/header_def", $this->view_data, TRUE);
         }
         $this->view_data["header"] = $template_header;
+
     }
 
     public function genarate_footer() {

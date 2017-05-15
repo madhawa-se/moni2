@@ -42,7 +42,11 @@
 
     <body>
 
+        <!--header starat-->
 
+        <?php echo $header ?>
+
+        <!--header end-->
 
         <style>
             .well3 {
@@ -104,7 +108,7 @@
                                         <input id="password" ng-model="password" name="password" type="password" placeholder="Password" class="form-control input-md" ng-minlength="5" required>
                                         <p ng-show="resetform.password.$error.required && (resetform.password.$touched || submitted)" class="help-danger help">Enter password</p>
                                         <p ng-show="resetform.password.$error.minlength && (resetform.password.$touched || submitted)" class="help-danger help">Password should be at least 5 character</p>
-                                        
+
 
                                     </div>
                                 </div>
@@ -116,7 +120,7 @@
                                         <p ng-show="resetform.passwordconfirm.$error && false" class="help-danger help">Password Must Match</p>
                                     </div>
                                 </div>
-                                <input type="hidden" hidden=""/>
+                                <input type="hidden" hidden="" name="ccode" value="<?php if(isset($ccode)){echo $ccode;}?>"/>
                                 <div class="form-group">
                                     <div class="span3">
                                         <br>

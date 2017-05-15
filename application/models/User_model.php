@@ -63,6 +63,12 @@ class user_model extends CI_Model {
         }
     }
 
+    function update_pass($id, $new_pass) {
+        $this->db->set('password', md5($new_pass));
+        $this->db->where('id', $id);
+        return $this->db->update('user');
+    }
+
     function update_pic($uid) {
         $sql = 'INSERT INTO pic (user_id, state)VALUES (?, ?) ON DUPLICATE KEY UPDATE state=0';
         $query = $this->db->query($sql, array($uid, 1));

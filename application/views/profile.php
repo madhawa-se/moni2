@@ -305,31 +305,32 @@ if (isset($jsondata)) {
                             <h4><b>Browse Matrimoney profile by</b></h4>
 
                             <div class="wel">
-                                <div class="col-md-6">
-                                    <h5><b>Religion :</b></h5>
-                                    Hindu : <a href="">Hindu Brides</a> | <a href="">Hindu Grooms</a><br>
-                                    Muslim : <a href="">Muslim Brides</a> | <a href="">Muslim Grooms</a><br>
-                                    Christian : <a href="">Christian Brides</a> | <a href="">Christian Grooms</a><br>
-                                    Buddhist : <a href="">Buddhist Brides</a> | <a href="">Buddhist Grooms</a>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5><b>Religion :</b></h5>
+                                        Hindu : <a href="">Hindu Brides</a> | <a href="">Hindu Grooms</a><br>
+                                        Muslim : <a href="">Muslim Brides</a> | <a href="">Muslim Grooms</a><br>
+                                        Christian : <a href="">Christian Brides</a> | <a href="">Christian Grooms</a><br>
+                                        Buddhist : <a href="">Buddhist Brides</a> | <a href="">Buddhist Grooms</a>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <h5><b>Language :</b></h5>
+                                        Sinhala : <a href="">Sinhala Brides</a> | <a href="">Sinhala Grooms</a><br>
+                                        Tamil : <a href="">Tamil Brides</a> | <a href="">Tamil Grooms</a><br>
+                                        Malay : <a href="">Malay Brides</a> | <a href="">Malay Grooms</a><br>
+
+
+                                        <h5><b>Lives in:</b></h5>
+                                        <a href="">Sri Lanka</a> | <a href="">UAE</a>
+                                        <a href="">UK</a> | <a href="">Qatar</a>
+                                        <a href="">India</a> | <a href="">Saudi Arabia</a> | <a href="">Australia</a><br>
+
+
+                                    </div>
 
                                 </div>
-
-                                <div class="col-md-6">
-                                    <h5><b>Language :</b></h5>
-                                    Sinhala : <a href="">Sinhala Brides</a> | <a href="">Sinhala Grooms</a><br>
-                                    Tamil : <a href="">Tamil Brides</a> | <a href="">Tamil Grooms</a><br>
-                                    Malay : <a href="">Malay Brides</a> | <a href="">Malay Grooms</a><br>
-
-
-                                    <h5><b>Lives in:</b></h5>
-                                    <a href="">Sri Lanka</a> | <a href="">UAE</a>
-                                    <a href="">UK</a> | <a href="">Qatar</a>
-                                    <a href="">India</a> | <a href="">Saudi Arabia</a> | <a href="">Australia</a><br>
-
-
-                                </div>
-
-
                             </div>
 
                         </div>
